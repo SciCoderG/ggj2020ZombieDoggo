@@ -10,24 +10,27 @@ public class PickupGrabber : MonoBehaviour
 
     private PickupItem currentlyAttachedItem = null;
 
-    private List<PickupItem> touchedItems = new List<PickupItem>();
-    public void StartTouch(PickupItem item)
-    {
-        touchedItems.Add(item);
-    }
 
-    public void StopTouch(PickupItem item)
+    private void OnTriggerEnter(Collider other)
     {
-        touchedItems.Remove(item);
-    }
-
-    private void Update()
-    {
-        if (touchedItems.Count > 0)
+        PickupItem item = other.GetComponent<PickupItem>();
+        if(null != item)
         {
-            Attach(touchedItems[0]);
+            if (null == currentlyAttachedItem)
+                Attach(item);
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        PickupItem item = other.GetComponent<PickupItem>();
+        if (null != item)
+        {
+            if (item == currentlyAttachedItem)
+                Dettach(item);
+        }
+    }
+
 
     public void Attach(PickupItem item)
     {
@@ -41,7 +44,6 @@ public class PickupGrabber : MonoBehaviour
 
     public void Dettach(PickupItem item)
     {
-        item.transform.SetParent(null);
         currentlyAttachedItem = null;
     }
 }

@@ -5,22 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class PickupItem : MonoBehaviour
 {
-    
-    private void OnTriggerEnter(Collider other)
-    {
-        PickupGrabber grabber = other.GetComponent<PickupGrabber>();
-        if(null != grabber)
-        {
-            grabber.StartTouch(this);
-        }
-    }
+    [SerializeField]
+    private string boneTransformName = "Bone";
+    [SerializeField]
+    private Transform attachPoint = null;
+    public string BoneAttachTransformName { get { return boneTransformName; } }
+    public Transform PickupAttachPoint { get { return attachPoint; } }
 
-    private void OnTriggerExit(Collider other)
-    {
-        PickupGrabber grabber = other.GetComponent<PickupGrabber>();
-        if (null != grabber)
-        {
-            grabber.StopTouch(this);
-        }
-    }
 }
