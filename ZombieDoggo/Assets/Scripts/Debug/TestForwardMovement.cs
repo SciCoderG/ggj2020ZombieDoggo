@@ -23,7 +23,8 @@ public class TestForwardMovement : MonoBehaviour
     {
         if(objectRigidBody.velocity.magnitude < maxVelocity)
         {
-            objectRigidBody.AddForce(Vector3.forward * acceleration * Time.fixedDeltaTime, accelerationForceMode);
+            objectRigidBody.AddForce(Vector3.forward * acceleration * Time.fixedDeltaTime, 
+                accelerationForceMode);
         }
     }
 }

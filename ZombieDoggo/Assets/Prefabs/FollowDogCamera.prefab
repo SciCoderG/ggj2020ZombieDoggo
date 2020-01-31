@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 664175874432587912}
   - component: {fileID: 664175874432587915}
   - component: {fileID: 664175874432587914}
+  - component: {fileID: 337936600}
   m_Layer: 0
   m_Name: FollowDogCamera
   m_TagString: MainCamera
@@ -25,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 664175874432587909}
-  m_LocalRotation: {x: 0.10575209, y: -0, z: -0, w: 0.9943925}
+  m_LocalRotation: {x: 0.10575208, y: 0, z: 0, w: 0.9943925}
   m_LocalPosition: {x: 0, y: 4.58, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -83,3 +84,16 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 664175874432587909}
   m_Enabled: 1
+--- !u!114 &337936600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664175874432587909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16b5384cc797e9b42b55f06c62715b58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  followObject: {fileID: 0}
