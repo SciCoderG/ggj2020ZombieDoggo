@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using de.crystalmesh;
 
 [RequireComponent(typeof(Rigidbody))]
 public class DogMovement : MonoBehaviour
@@ -28,7 +29,10 @@ public class DogMovement : MonoBehaviour
         velocityChange += ProcessHorizontalInput();
         velocityChange += ProcessVerticalInput();
         dogRigidBody.AddForce(velocityChange * Time.fixedDeltaTime, accelerationForceMode);
+        dogRigidBody.velocity = Utilities.ClampVector(dogRigidBody.velocity, new Vector3(maxVelocity.x, 0.0f, maxVelocity.y));
     }
+
+    
 
     private Vector3 ProcessHorizontalInput()
     {
