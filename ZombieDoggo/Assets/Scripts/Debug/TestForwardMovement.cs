@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using de.crystalmesh;
 [RequireComponent(typeof(Rigidbody))]
 public class TestForwardMovement : MonoBehaviour
 {
@@ -23,7 +24,11 @@ public class TestForwardMovement : MonoBehaviour
     {
         if(objectRigidBody.velocity.magnitude < maxVelocity)
         {
-            objectRigidBody.AddForce(Vector3.forward * acceleration * Time.fixedDeltaTime, accelerationForceMode);
+            objectRigidBody.AddForce(Vector3.forward * acceleration * Time.fixedDeltaTime, 
+                accelerationForceMode);
         }
+        objectRigidBody.velocity =
+                Utilities.ClampVector(
+                    objectRigidBody.velocity, Vector3.forward * maxVelocity);
     }
 }
