@@ -76,8 +76,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4075bc2c3aac7c643856b0eb33d1eae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 5
-  dogRigidBody: {fileID: 0}
+  acceleration: {x: 30, y: 20}
+  maxVelocity: {x: 20, y: 10}
 --- !u!1 &7222214242580699662
 GameObject:
   m_ObjectHideFlags: 0
