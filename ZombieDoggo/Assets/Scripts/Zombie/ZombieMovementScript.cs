@@ -10,32 +10,38 @@ public class ZombieMovementScript : MonoBehaviour
     private float maxVelocity = 15.0f;
     [SerializeField]
     private float lifeSpan = 25.0f;
+    
 
     private ForceMode accelerationForceMode = ForceMode.VelocityChange;
 
-    private Rigidbody objectRigidBody = null;
+    private Rigidbody zombieRigidBody = null;
+    private Animator zombieAnimator = null;
 
     // Start is called before the first frame update
     void Start()
     {
-        objectRigidBody = GetComponent<Rigidbody>();
+        zombieRigidBody = GetComponent<Rigidbody>();
+        zombieAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (objectRigidBody.velocity.magnitude < maxVelocity)
+        if (zombieRigidBody.velocity.magnitude < maxVelocity)
         {
-            objectRigidBody.AddForce(Vector3.forward * acceleration * Time.fixedDeltaTime, accelerationForceMode);
+            zombieRigidBody.AddForce(Vector3.forward * acceleration * Time.fixedDeltaTime, accelerationForceMode);
         }
     }
 
     void OnTriggerEnter(Collider col)
     {
-
-        if(col.GetComponent<Environment>() != null)
+        if(col.GetComponent<EnvironmentalObjects>() != null)
         {
-              //lifeSpan -= col.GameObject.GetComponent<Environment>();
+            if (lifeSpan < 0)
+            {
+                lifeSpan -= col.gameObject.GetComponent<EnvironmentalObjects>().damageValue;
+                zombieAnimator.SetTrigger("IsStumbling");
+            }
         }
     }
 }
