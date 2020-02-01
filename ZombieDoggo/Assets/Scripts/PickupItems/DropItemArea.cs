@@ -40,6 +40,12 @@ public class DropItemArea : MonoBehaviour
         }
     }
 
+    public PickupItem GetRandomAttachedItem()
+    {
+        PickupItem[] attachedItems = ZombieRootNode.GetComponentsInChildren<PickupItem>();
+        return Utilities.RandomFromArray(attachedItems);
+    }
+
     private ItemAttachmentPoint FindRandomFreeAttachmentPoint()
     {
         List<ItemAttachmentPoint> freeAttachmentPoints = new List<ItemAttachmentPoint>();

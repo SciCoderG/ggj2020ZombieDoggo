@@ -7,12 +7,14 @@ public class ZombieManagementScript : MonoBehaviour
     [SerializeField]
     private float lifeSpan = 25.0f;
     [SerializeField]
-    private Transform doggo = null;
+    private GameObject doggo = null;
     [SerializeField]
     private Camera followDogCamera = null;
+    [SerializeField]
+    private DropItemArea dropArea = null;
 
     private Animator zombieAnimator = null;
-    private bool isGrabbing = false;
+    private bool canGrab = false;
     private bool isDoggoColliding = false;
 
 
@@ -20,21 +22,22 @@ public class ZombieManagementScript : MonoBehaviour
     void Start()
     {
         zombieAnimator = GetComponent<Animator>();
+        dropArea.GetRandomAttachedItem();
     }
 
 
     void Update()
     {
-        if (Input.GetButtonDown("Grabbing"))
+        if (Input.GetButtonDown("Grabbing") && canGrab)
         {
-            isGrabbing = true;
+            GrabZombie();
         }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!isGrabbing | transform.parent == null) 
+        if (!canGrab | transform.parent == null) 
         {
             transform.Translate(Vector3.forward * Time.deltaTime);
         }
@@ -55,23 +58,39 @@ public class ZombieManagementScript : MonoBehaviour
             }
         }
 
-        if(col.GetComponent<DogMovement>() != null)
+        
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.GetComponent<DogMovement>() != null)
         {
-            if (isGrabbing)
-            {
-                followDogCamera.GetComponent<FollowDogCameraMovement>().isZooming = true;
-                transform.SetParent(doggo);
-                StartCoroutine(AnimationCoroutine());
-            }
+           canGrab = true;
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<DogMovement>() != null)
+        {
+            canGrab = false;
+        }
+    }
+
+    private void GrabZombie()
+    {
+        followDogCamera.GetComponent<FollowDogCameraMovement>().IsZooming = true;
+        transform.SetParent(doggo.transform);
+        StartCoroutine(AnimationCoroutine());
     }
 
     IEnumerator AnimationCoroutine()
     {
         yield return new WaitForSeconds(0.5f);
-        followDogCamera.GetComponent<FollowDogCameraMovement>().isZooming = false;
+        doggo.GetComponent<DogMovement>().slowDownWhileGrabbing = false;
+        followDogCamera.GetComponent<FollowDogCameraMovement>().IsZooming = false;
         transform.parent = null;
-        isGrabbing = false;
+        canGrab = false;
     }
 }
 
