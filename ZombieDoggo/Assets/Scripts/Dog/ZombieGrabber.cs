@@ -45,14 +45,14 @@ public class ZombieGrabber : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        ZombieManagementScript zombie = other.GetComponent<ZombieManagementScript>();
+        GrabbableByDoggoArea zombie = other.GetComponent<GrabbableByDoggoArea>();
         if (null != zombie)
             CanGrab = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        ZombieManagementScript zombie = other.GetComponent<ZombieManagementScript>();
+        GrabbableByDoggoArea zombie = other.GetComponent<GrabbableByDoggoArea>();
         if (null != zombie)
             CanGrab = false;
     }
