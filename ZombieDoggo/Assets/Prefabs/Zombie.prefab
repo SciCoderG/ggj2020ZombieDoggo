@@ -43,6 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40c21fe7b78924149ad239c8938de2b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  greenImage: {fileID: 0}
+  redImage: {fileID: 0}
+  life: 2
 --- !u!1 &1044611111
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,6 +89,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40c21fe7b78924149ad239c8938de2b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  greenImage: {fileID: 0}
+  redImage: {fileID: 0}
+  life: 2
 --- !u!1 &1762831340
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,6 +193,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40c21fe7b78924149ad239c8938de2b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  greenImage: {fileID: 0}
+  redImage: {fileID: 0}
+  life: 2
 --- !u!1 &1946287769
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,6 +239,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40c21fe7b78924149ad239c8938de2b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  greenImage: {fileID: 0}
+  redImage: {fileID: 0}
+  life: 2
 --- !u!1 &496701564521076071
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,7 +428,6 @@ GameObject:
   - component: {fileID: 3186670548108968483}
   - component: {fileID: 165536700}
   - component: {fileID: 5382545984356337317}
-  - component: {fileID: 2752111787094779095}
   m_Layer: 10
   m_Name: Zombie
   m_TagString: Untagged
@@ -507,7 +518,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 112
   m_CollisionDetection: 3
 --- !u!114 &3186670548108968483
 MonoBehaviour:
@@ -522,6 +533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeSpan: 25
+  zombieSpeed: 1
   dropArea: {fileID: 8648036031223706629}
 --- !u!136 &165536700
 CapsuleCollider:
@@ -533,7 +545,7 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: dcdaf4d6d7ae88a469136b145848673b, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
