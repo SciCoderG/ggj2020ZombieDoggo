@@ -44,4 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lanePrefabs:
-  - {fileID: 6967783087068738976, guid: 5106140fd7981b1479cfec3115b077ab, type: 3}
+  - {fileID: 474330595391495599, guid: 4a061f97841861b4493177010a11ded2, type: 3}
+  - {fileID: 474330595391495599, guid: b58ddef42e65f37429806343e2f0454b, type: 3}
+  - {fileID: 474330595391495599, guid: 526a26522546e1c4eaa30e6ba06c7d57, type: 3}
+  - {fileID: 474330595391495599, guid: c9d787cc17e978c43a118be941d26ff2, type: 3}
