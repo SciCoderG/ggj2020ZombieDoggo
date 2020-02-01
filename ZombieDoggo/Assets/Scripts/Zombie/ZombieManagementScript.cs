@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ZombieManagementScript : MonoBehaviour
 {
@@ -54,9 +55,11 @@ public class ZombieManagementScript : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if(col.GetComponent<EnvironmentalObjects>() != null)
+
+        if (col.GetComponent<EnvironmentalObjects>() != null)
         {
             lifeSpan -= col.gameObject.GetComponent<EnvironmentalObjects>().damageValue;
+
             if (lifeSpan < 0)
             {
                 zombieAnimator.SetTrigger("IsStumbling");
@@ -109,5 +112,6 @@ public class ZombieManagementScript : MonoBehaviour
         this.transform.forward = Vector3.forward;
         doggo.GetComponent<Animator>().SetBool("isDragging", false);
     }
+
 }
 
