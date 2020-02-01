@@ -12,6 +12,12 @@ public class PickupGrabber : MonoBehaviour
 
     private PickupItem currentlyAttachedItem = null;
 
+    private Animator doggoAnimator;
+
+    private void Start()
+    {
+        doggoAnimator = this.transform.parent.GetComponent<Animator>();
+    }
 
     private void Update()
     {
@@ -46,6 +52,8 @@ public class PickupGrabber : MonoBehaviour
     {
         if(null == currentlyAttachedItem)
         {
+            doggoAnimator.SetTrigger("PickUpTrigger");
+
             currentlyAttachedItem = item;
             item.transform.SetParent(grabbingPoint);
             item.transform.localPosition = Vector3.zero;
@@ -54,6 +62,8 @@ public class PickupGrabber : MonoBehaviour
 
     public void DropCurrentlyAttachedItem()
     {
+        doggoAnimator.SetTrigger("DropTrigger");
+
         currentlyAttachedItem.Drop(deactivationTimeAfterDrop);
         currentlyAttachedItem = null;
     }
