@@ -242,8 +242,8 @@ GameObject:
   - component: {fileID: 3186670547669737136}
   - component: {fileID: 3186670547669737137}
   - component: {fileID: 3186670547669737138}
-  - component: {fileID: 2124211256}
   - component: {fileID: 3186670548108968483}
+  - component: {fileID: 165536700}
   m_Layer: 10
   m_Name: Zombie
   m_TagString: Untagged
@@ -333,19 +333,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 3
---- !u!65 &2124211256
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3186670547669737135}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3186670548108968483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,3 +349,17 @@ MonoBehaviour:
   doggo: {fileID: 0}
   followDogCamera: {fileID: 0}
   dropArea: {fileID: 8648036031223706629}
+--- !u!136 &165536700
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3186670547669737135}
+  m_Material: {fileID: 13400000, guid: dcdaf4d6d7ae88a469136b145848673b, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}

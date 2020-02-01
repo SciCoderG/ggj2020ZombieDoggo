@@ -32,7 +32,6 @@ public class DogMovement : MonoBehaviour
         Vector3 velocityChange = Vector3.zero;
         velocityChange += ProcessHorizontalInput();
         velocityChange += ProcessVerticalInput();
-
         if (!slowDownWhileGrabbing) 
         {
             
@@ -41,11 +40,13 @@ public class DogMovement : MonoBehaviour
         {
 
         }
+        dogRigidBody.velocity = Utilities.ClampVector(dogRigidBody.velocity, 
+            new Vector3(maxVelocity.x, 10.0f, maxVelocity.y));
+
         dogRigidBody.AddForce(velocityChange * Time.fixedDeltaTime, accelerationForceMode);
-        dogRigidBody.velocity = Utilities.ClampVector(dogRigidBody.velocity, new Vector3(maxVelocity.x, 0.0f, maxVelocity.y));
     }
 
-    
+
 
     private Vector3 ProcessHorizontalInput()
     {
