@@ -22,7 +22,6 @@ public class DogMovement : MonoBehaviour
 
     private Rigidbody dogRigidBody = null;
     private CMRotateTowards rotateTowardsScript = null;
-    private ForceMode accelerationForceMode = ForceMode.VelocityChange;
 
     private Animator doggoAnimator = null;
 

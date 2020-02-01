@@ -8,12 +8,7 @@ public class ZombieManagementScript : MonoBehaviour
     [SerializeField]
     private float lifeSpan = 25.0f;
     [SerializeField]
-    private GameObject doggo = null;
-    [SerializeField]
-    private FollowDogCameraMovement followDogCamera = null;
-    [SerializeField]
     private DropItemArea dropArea = null;
-	
 
     private Animator zombieAnimator = null;
 

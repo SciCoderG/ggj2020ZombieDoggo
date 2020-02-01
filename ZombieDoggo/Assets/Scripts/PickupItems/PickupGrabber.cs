@@ -55,8 +55,8 @@ public class PickupGrabber : MonoBehaviour
             doggoAnimator.SetTrigger("PickUpTrigger");
 
             currentlyAttachedItem = item;
-            item.transform.SetParent(grabbingPoint);
-            item.transform.localPosition = Vector3.zero;
+
+            item.Pickup(grabbingPoint);
         }
     }
 
