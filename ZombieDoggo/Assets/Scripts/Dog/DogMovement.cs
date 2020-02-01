@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using de.crystalmesh;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody), typeof(CMRotateTowards))]
 public class DogMovement : MonoBehaviour
 {
     [Tooltip("Acceleration in left/right and forward/back direction")]
@@ -12,18 +12,21 @@ public class DogMovement : MonoBehaviour
     [Tooltip("Maximum movement speed in left/right and forward/back direction")]
     [SerializeField]
     private Vector2 maxVelocity = new Vector2(30.0f, 20.0f);
-
+    [SerializeField]
+    private float jumpStrength = 2.0f;
     public Vector2 MaxVelocity { get { return maxVelocity; } set { maxVelocity = value; } }
    
     public bool slowDownWhileGrabbing = false;
 
     private Rigidbody dogRigidBody = null;
+    private CMRotateTowards rotateTowardsScript = null;
     private ForceMode accelerationForceMode = ForceMode.VelocityChange;
 
     // Start is called before the first frame update
     void Awake()
     {
         dogRigidBody = GetComponent<Rigidbody>();
+        rotateTowardsScript = GetComponent<CMRotateTowards>();
     }
 
     // Update is called once per frame
@@ -32,21 +35,36 @@ public class DogMovement : MonoBehaviour
         Vector3 velocityChange = Vector3.zero;
         velocityChange += ProcessHorizontalInput();
         velocityChange += ProcessVerticalInput();
-        if (!slowDownWhileGrabbing) 
+
+        if (!slowDownWhileGrabbing)
         {
-            
+
         }
         else
         {
 
         }
-        dogRigidBody.velocity = Utilities.ClampVector(dogRigidBody.velocity, 
-            new Vector3(maxVelocity.x, 10.0f, maxVelocity.y));
+
 
         dogRigidBody.AddForce(velocityChange * Time.fixedDeltaTime, accelerationForceMode);
+        dogRigidBody.velocity = Utilities.ClampVector(dogRigidBody.velocity,
+            new Vector3(maxVelocity.x, 10.0f, maxVelocity.y));
+
+        UpdateRotation();
     }
 
-
+    private void UpdateRotation()
+    {
+        Vector3 currentVel = dogRigidBody.velocity;
+        if(currentVel.sqrMagnitude > 0.1f)
+        {
+            rotateTowardsScript.Target = dogRigidBody.transform.position + dogRigidBody.velocity.normalized;
+        }
+        else
+        {
+            rotateTowardsScript.Target = dogRigidBody.transform.position + dogRigidBody.transform.forward;
+        }
+    }
 
     private Vector3 ProcessHorizontalInput()
     {
