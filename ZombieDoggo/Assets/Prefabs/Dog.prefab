@@ -152,10 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4075bc2c3aac7c643856b0eb33d1eae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: {x: 30, y: 20}
-  maxVelocity: {x: 20, y: 10}
---- !u!65 &364536213
-BoxCollider:
+  acceleration: {x: 50, y: 50}
+  maxVelocity: {x: 15, y: 15}
+--- !u!136 &364536213
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -164,8 +164,9 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 2}
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7222214242580699662
 GameObject:
