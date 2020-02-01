@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieMovementScript : MonoBehaviour
+public class ZombieManagementScript : MonoBehaviour
 {
     [SerializeField]
     private float lifeSpan = 25.0f;
     [SerializeField]
     private Transform doggo = null;
+    [SerializeField]
+    private Camera followDogCamera = null;
 
     private Animator zombieAnimator = null;
     private bool isGrabbing = false;
+    private bool isDoggoColliding = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +59,7 @@ public class ZombieMovementScript : MonoBehaviour
         {
             if (isGrabbing)
             {
+                followDogCamera.GetComponent<FollowDogCameraMovement>().isZooming = true;
                 transform.SetParent(doggo);
                 StartCoroutine(AnimationCoroutine());
             }
@@ -63,7 +68,8 @@ public class ZombieMovementScript : MonoBehaviour
 
     IEnumerator AnimationCoroutine()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
+        followDogCamera.GetComponent<FollowDogCameraMovement>().isZooming = false;
         transform.parent = null;
         isGrabbing = false;
     }
