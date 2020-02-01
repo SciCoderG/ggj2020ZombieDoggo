@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 252ccb7410b780d4fa6482cd1123d1d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPoint: {fileID: 6967783087572413662}
 --- !u!1 &6967783087572413663
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,7 +103,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6967783087669264281}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -16.5}
   m_LocalScale: {x: 25, y: 25, z: 1}
   m_Children: []
   m_Father: {fileID: 6967783087068738977}
@@ -116,7 +117,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6967783087669264281}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -144,7 +145,7 @@ PrefabInstance:
     - target: {fileID: 7488936728453867902, guid: 208f097e9236b0845ac563a3a8568a32,
         type: 3}
       propertyPath: m_Name
-      value: Lane1
+      value: LaneObjects
       objectReference: {fileID: 0}
     - target: {fileID: 8183868731334380728, guid: 208f097e9236b0845ac563a3a8568a32,
         type: 3}

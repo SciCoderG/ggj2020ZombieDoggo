@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Lane : MonoBehaviour
 {
-    public Action OnSpawnNextLane;
+    public Action<Lane> OnSpawnNextLane;
 
     [SerializeField]
     private Transform spawnPoint = null;
@@ -14,6 +14,6 @@ public class Lane : MonoBehaviour
     public void SpawnNextLane()
     {
         if (null != OnSpawnNextLane)
-            OnSpawnNextLane.Invoke();
+            OnSpawnNextLane.Invoke(this);
     }
 }

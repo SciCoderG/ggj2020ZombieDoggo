@@ -12,7 +12,11 @@ public class LaneSpawner : MonoBehaviour
 
     private void Awake()
     {
-        spawnedLanes.AddRange(FindObjectsOfType<Lane>());
+        spawnedLanes.Add(FindObjectOfType<Lane>());
+        foreach(Lane lane in spawnedLanes)
+        {
+            lane.OnSpawnNextLane += OnSpawnNewLane;
+        }
     }
 
     public void OnSpawnNewLane(Lane origin)
@@ -21,5 +25,6 @@ public class LaneSpawner : MonoBehaviour
 
         Lane spawnedLane = Instantiate(prefabTypeToSpawn.gameObject).GetComponent<Lane>();
         spawnedLane.transform.position = origin.NextLaneSpawnPoint.position;
+        spawnedLane.OnSpawnNextLane += OnSpawnNewLane;
     }
 }
