@@ -18,11 +18,18 @@ public class ZombieManagementScript : MonoBehaviour
     private bool isDoggoColliding = false;
 
 
+    private void Awake()
+    {
+        if (null == doggo)
+            doggo = FindObjectOfType<DogMovement>().gameObject;
+        if (null == followDogCamera)
+            followDogCamera = FindObjectOfType<FollowDogCameraMovement>().GetComponent<Camera>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         zombieAnimator = GetComponent<Animator>();
-        dropArea.GetRandomAttachedItem();
     }
 
 
@@ -37,7 +44,7 @@ public class ZombieManagementScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!canGrab | transform.parent == null) 
+        if (!canGrab || transform.parent == null) 
         {
             transform.Translate(Vector3.forward * Time.deltaTime);
         }
@@ -57,8 +64,6 @@ public class ZombieManagementScript : MonoBehaviour
                 zombieAnimator.SetTrigger("IsDying");
             }
         }
-
-        
     }
 
     private void OnTriggerStay(Collider other)
@@ -91,6 +96,7 @@ public class ZombieManagementScript : MonoBehaviour
         followDogCamera.GetComponent<FollowDogCameraMovement>().IsZooming = false;
         transform.parent = null;
         canGrab = false;
+        this.transform.forward = Vector3.forward;
     }
 }
 
