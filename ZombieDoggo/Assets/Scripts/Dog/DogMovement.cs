@@ -13,6 +13,8 @@ public class DogMovement : MonoBehaviour
     [SerializeField]
     private Vector2 maxVelocity = new Vector2(30.0f, 20.0f);
 
+    public Vector2 MaxVelocity { get { return maxVelocity; } set { maxVelocity = value; } }
+
     private Rigidbody dogRigidBody = null;
     private ForceMode accelerationForceMode = ForceMode.VelocityChange;
 

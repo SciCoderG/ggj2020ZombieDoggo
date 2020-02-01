@@ -9,4 +9,9 @@ public class PickupItem : MonoBehaviour
     private Transform attachPoint = null;
     public Transform PickupAttachPoint { get { return attachPoint; } }
 
+
+    public void Drop(float deactivationTime)
+    {
+        this.transform.parent = null;
+    }
 }

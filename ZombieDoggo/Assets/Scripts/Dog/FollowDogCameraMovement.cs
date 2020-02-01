@@ -5,7 +5,7 @@ using UnityEngine;
 public class FollowDogCameraMovement : MonoBehaviour
 {
     [SerializeField]
-    private DogMovement dogObject = null;
+    private DogMovement dogObject = null;   
 
     private Vector3 initialOffset = Vector3.zero;
 

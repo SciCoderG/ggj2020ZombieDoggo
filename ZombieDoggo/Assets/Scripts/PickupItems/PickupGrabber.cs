@@ -7,9 +7,19 @@ public class PickupGrabber : MonoBehaviour
     [Tooltip("Transform to which the pickup item should be attached.")]
     [SerializeField]
     private Transform grabbingPoint = null;
+    [SerializeField]
+    private float deactivationTimeAfterDrop = 2.0f;
 
     private PickupItem currentlyAttachedItem = null;
 
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("Grabbing") && null != currentlyAttachedItem)
+        {
+            DropCurrentlyAttachedItem();
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -27,7 +37,7 @@ public class PickupGrabber : MonoBehaviour
         if (null != item)
         {
             if (item == currentlyAttachedItem)
-                Dettach(item);
+                currentlyAttachedItem = null;
         }
     }
 
@@ -42,8 +52,9 @@ public class PickupGrabber : MonoBehaviour
         }
     }
 
-    public void Dettach(PickupItem item)
+    public void DropCurrentlyAttachedItem()
     {
+        currentlyAttachedItem.transform.SetParent(null);
         currentlyAttachedItem = null;
     }
 }
