@@ -13,6 +13,7 @@ public class NextLaneSpawnTrigger : MonoBehaviour
         if(null != other.GetComponent<ZombieManagementScript>())
         {
             ConnectedLane.SpawnNextLane();
+            GetComponent<Collider>().enabled = false;
         }
 
     }

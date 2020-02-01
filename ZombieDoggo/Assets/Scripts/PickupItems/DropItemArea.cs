@@ -11,9 +11,10 @@ public class DropItemArea : MonoBehaviour
 
     private ItemAttachmentPoint[] attachmentPoints;
 
-    private void Start()
+    private void Awake()
     {
         attachmentPoints = ZombieRootNode.GetComponentsInChildren<ItemAttachmentPoint>();
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -21,22 +22,28 @@ public class DropItemArea : MonoBehaviour
         PickupItem item = other.GetComponent<PickupItem>();
         if(null != item && item.IsCarried)
         {
-            ItemAttachmentPoint attachmentPoint = FindRandomFreeAttachmentPoint();
-            if(null != attachmentPoint)
-            {
-                AttachItemToAttachmentPoint(item, attachmentPoint);
-            }
+            AttachItem(item);
         }
     }
 
-    private static void AttachItemToAttachmentPoint(PickupItem item, ItemAttachmentPoint attachmentPoint)
+    public void AttachItem(PickupItem item)
     {
-        Transform bone = attachmentPoint.transform;
-        if (null != bone)
+        ItemAttachmentPoint attachmentPoint = FindRandomFreeAttachmentPoint();
+        if (null != attachmentPoint)
         {
-            item.AttachToZombie(bone);
-            Destroy(item);
+            attachmentPoint.AttachItem(item);
         }
+    }
+
+    public ItemAttachmentPoint GetRandomUsedAttachmentPoint()
+    {
+        List<ItemAttachmentPoint> used = new List<ItemAttachmentPoint>();
+        foreach (ItemAttachmentPoint attachmentPoint in attachmentPoints)
+        {
+            if (attachmentPoint.HasAttachedItem)
+                used.Add(attachmentPoint);
+        }
+        return Utilities.RandomFromList(used);
     }
 
     public PickupItem GetRandomAttachedItem()
@@ -45,7 +52,7 @@ public class DropItemArea : MonoBehaviour
         return Utilities.RandomFromArray(attachedItems);
     }
 
-    private ItemAttachmentPoint FindRandomFreeAttachmentPoint()
+    public ItemAttachmentPoint FindRandomFreeAttachmentPoint()
     {
         List<ItemAttachmentPoint> freeAttachmentPoints = new List<ItemAttachmentPoint>();
         foreach(ItemAttachmentPoint attachmentPoint in attachmentPoints)
