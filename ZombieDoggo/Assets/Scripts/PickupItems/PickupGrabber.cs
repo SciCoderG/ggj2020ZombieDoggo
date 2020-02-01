@@ -15,6 +15,7 @@ public class PickupGrabber : MonoBehaviour
     [SerializeField]
     private Animator doggoAnimator;
 
+    private bool canPickup = true;
 
     private void Update()
     {
@@ -47,7 +48,7 @@ public class PickupGrabber : MonoBehaviour
 
     public void Attach(PickupItem item)
     {
-        if(null == currentlyAttachedItem)
+        if(canPickup && null == currentlyAttachedItem)
         {
             doggoAnimator.SetTrigger("PickUpTrigger");
 
@@ -59,9 +60,18 @@ public class PickupGrabber : MonoBehaviour
 
     public void DropCurrentlyAttachedItem()
     {
+        StartCoroutine(WaitBeforeNextPickup());
+
         doggoAnimator.SetTrigger("DropTrigger");
 
         currentlyAttachedItem.Drop(deactivationTimeAfterDrop);
         currentlyAttachedItem = null;
+    }
+
+    private IEnumerator WaitBeforeNextPickup()
+    {
+        canPickup = false;
+        yield return new WaitForSeconds(deactivationTimeAfterDrop);
+        canPickup = true;
     }
 }

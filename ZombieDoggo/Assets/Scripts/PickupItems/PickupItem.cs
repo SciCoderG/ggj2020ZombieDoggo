@@ -6,17 +6,25 @@ using UnityEngine;
 public class PickupItem : MonoBehaviour
 {
     [SerializeField]
+    private float life = 3.0f;
+    public float Life { get { return life; } }
+
+    [SerializeField]
     private Transform root = null;
     [SerializeField]
     private Transform attachPoint = null;
+    [SerializeField]
+    private float dropForce = 10.0f;
     public Transform PickupAttachPoint { get { return attachPoint; } }
     public bool IsCarried { get; set; } = false;
 
     private Collider pickupCollider = null;
+    private Rigidbody itemRB = null;
 
     private void Awake()
     {
         pickupCollider = GetComponent<Collider>();
+        itemRB = root.GetComponent<Rigidbody>();
     }
 
     public void Pickup(Transform grabbingPoint)
@@ -25,6 +33,9 @@ public class PickupItem : MonoBehaviour
         root.parent = grabbingPoint;
         root.localPosition = Vector3.zero;
         root.forward = grabbingPoint.forward;
+        itemRB.isKinematic = true;
+        pickupCollider.enabled = true;
+
     }
 
     public void AttachToZombie(Transform bone)
@@ -32,20 +43,22 @@ public class PickupItem : MonoBehaviour
         root.SetParent(bone);
         root.forward = bone.forward;
         root.localPosition = -PickupAttachPoint.localPosition;
+        itemRB.isKinematic = true;
+        pickupCollider.enabled = false;
     }
 
     public void Drop(float deactivationTime)
     {
-        this.transform.parent = null;
+        root.SetParent(null);
         IsCarried = false;
-        StartCoroutine(DeactivateColliderForSeconds(deactivationTime));
+        itemRB.isKinematic = false;
+        pickupCollider.enabled = true;
+        itemRB.AddForce(dropForce * Vector3.up, ForceMode.VelocityChange);
     }
 
-    private IEnumerator DeactivateColliderForSeconds(float deactivationTime)
+    public void DestroyItself()
     {
-        pickupCollider.enabled = false;
-        yield return new WaitForSeconds(deactivationTime);
-        pickupCollider.enabled = true;
-
+        Drop(2.0f);
+        Destroy(root.gameObject, 1.9f);
     }
 }
