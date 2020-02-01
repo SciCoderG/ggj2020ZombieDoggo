@@ -3869,6 +3869,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Rasentile_01
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 55bdf577f40ff5d4fb3c2cec1293a869,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55bdf577f40ff5d4fb3c2cec1293a869, type: 3}
 --- !u!4 &169322951621606825 stripped
