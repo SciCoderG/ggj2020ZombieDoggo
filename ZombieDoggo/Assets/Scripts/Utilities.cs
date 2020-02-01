@@ -20,7 +20,7 @@ namespace de.crystalmesh
             T randomItem = default(T);
             if (list.Length > 0)
             {
-                int randomEntry = Random.Range(0, list.Length - 1);
+                int randomEntry = Random.Range(0, list.Length);
                 randomItem = list[randomEntry];
             }
             return randomItem;
@@ -31,7 +31,7 @@ namespace de.crystalmesh
             T randomItem = default(T);
             if(list.Count > 0)
             {
-                int randomEntry = Random.Range(0, list.Count - 1);
+                int randomEntry = Random.Range(0, list.Count);
                 randomItem = list[randomEntry];
             }
             return randomItem;
