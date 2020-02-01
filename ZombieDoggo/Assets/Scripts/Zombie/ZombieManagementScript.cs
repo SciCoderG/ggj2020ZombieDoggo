@@ -22,6 +22,7 @@ public class ZombieManagementScript : MonoBehaviour
     void Start()
     {
         zombieAnimator = GetComponent<Animator>();
+        dropArea.GetRandomAttachedItem();
     }
 
 
