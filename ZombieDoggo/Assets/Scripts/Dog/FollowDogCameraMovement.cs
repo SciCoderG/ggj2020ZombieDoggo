@@ -5,20 +5,26 @@ using UnityEngine;
 public class FollowDogCameraMovement : MonoBehaviour
 {
     [SerializeField]
-    private GameObject followObject = null;
+    private DogMovement dogObject = null;
 
     private Vector3 initialOffset = Vector3.zero;
-    
+
+
+    private void Awake()
+    {
+        if (null == dogObject)
+            dogObject = FindObjectOfType<DogMovement>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        initialOffset = transform.position - followObject.transform.position;   
+        initialOffset = transform.position - dogObject.transform.position;   
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.transform.position = new Vector3(transform.position.x, transform.position.y, followObject.transform.position.z + initialOffset.z);
+        this.transform.position = new Vector3(transform.position.x, transform.position.y, dogObject.transform.position.z + initialOffset.z);
     }
 }
