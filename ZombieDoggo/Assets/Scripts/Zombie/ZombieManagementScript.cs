@@ -12,6 +12,8 @@ public class ZombieManagementScript : MonoBehaviour
     private Camera followDogCamera = null;
     [SerializeField]
     private DropItemArea dropArea = null;
+	[SerializeField]
+    private float grabZOffset = 5f;
 
     private Animator zombieAnimator = null;
     private bool canGrab = false;
@@ -85,18 +87,27 @@ public class ZombieManagementScript : MonoBehaviour
     private void GrabZombie()
     {
         followDogCamera.GetComponent<FollowDogCameraMovement>().IsZooming = true;
-        transform.SetParent(doggo.transform);
+        transform.SetParent(doggo.transform.Find("GrabbingPoint").transform);
+        this.transform.localPosition = new Vector3(0, transform.localPosition.y, grabZOffset);
+
+        zombieAnimator.SetTrigger("IsCarriedByDoggo");
+
+        doggo.GetComponent<DogMovement>().slowDownWhileGrabbing = true;
+
         StartCoroutine(AnimationCoroutine());
     }
 
     IEnumerator AnimationCoroutine()
     {
-        yield return new WaitForSeconds(0.5f);
+        doggo.GetComponent<Animator>().SetBool("isDragging", true);
+
+        yield return new WaitForSeconds(0.75f);
         doggo.GetComponent<DogMovement>().slowDownWhileGrabbing = false;
         followDogCamera.GetComponent<FollowDogCameraMovement>().IsZooming = false;
         transform.parent = null;
         canGrab = false;
         this.transform.forward = Vector3.forward;
+        doggo.GetComponent<Animator>().SetBool("isDragging", false);
     }
 }
 

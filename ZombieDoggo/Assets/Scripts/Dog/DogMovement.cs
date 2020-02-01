@@ -16,13 +16,21 @@ public class DogMovement : MonoBehaviour
     private float jumpStrength = 2.0f;
     public Vector2 MaxVelocity { get { return maxVelocity; } set { maxVelocity = value; } }
    
-    public bool slowDownWhileGrabbing = false;
+    public bool slowDownWhileGrabbing { get; set; }
+    private float slowValue = 1f;
 
     private Rigidbody dogRigidBody = null;
     private CMRotateTowards rotateTowardsScript = null;
     private ForceMode accelerationForceMode = ForceMode.VelocityChange;
 
+    private Animator doggoAnimator = null;
+
     // Start is called before the first frame update
+    void Start()
+    {
+        doggoAnimator = this.gameObject.GetComponent<Animator>();    
+    }
+
     void Awake()
     {
         dogRigidBody = GetComponent<Rigidbody>();
@@ -36,21 +44,22 @@ public class DogMovement : MonoBehaviour
         velocityChange += ProcessHorizontalInput();
         velocityChange += ProcessVerticalInput();
 
-        if (!slowDownWhileGrabbing)
+        if (slowDownWhileGrabbing) 
         {
-
+            slowValue = 0.5f;
         }
         else
         {
-
+            slowValue = 1f;
         }
 
 
         dogRigidBody.AddForce(velocityChange * Time.fixedDeltaTime, accelerationForceMode);
-        dogRigidBody.velocity = Utilities.ClampVector(dogRigidBody.velocity,
-            new Vector3(maxVelocity.x, 10.0f, maxVelocity.y));
+        dogRigidBody.velocity = Utilities.ClampVector(dogRigidBody.velocity, new Vector3(maxVelocity.x * slowValue, 0.0f, maxVelocity.y * slowValue));
 
         UpdateRotation();
+        doggoAnimator.SetFloat("velocityX", dogRigidBody.velocity.x);
+        doggoAnimator.SetFloat("velocityZ", dogRigidBody.velocity.z);
     }
 
     private void UpdateRotation()
@@ -83,4 +92,5 @@ public class DogMovement : MonoBehaviour
             velocityChange = vertInputVec* acceleration.y;
         return velocityChange;
     }
+
 }
