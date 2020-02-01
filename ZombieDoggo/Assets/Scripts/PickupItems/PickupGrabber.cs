@@ -12,12 +12,9 @@ public class PickupGrabber : MonoBehaviour
 
     private PickupItem currentlyAttachedItem = null;
 
+    [SerializeField]
     private Animator doggoAnimator;
 
-    private void Start()
-    {
-        doggoAnimator = this.transform.parent.GetComponent<Animator>();
-    }
 
     private void Update()
     {

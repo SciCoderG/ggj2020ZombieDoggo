@@ -432,26 +432,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2023717843683948280, guid: 965091bfa4d123442a4ef3f1229c0d25,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.21000001
-      objectReference: {fileID: 0}
-    - target: {fileID: 6059196118212794144, guid: 965091bfa4d123442a4ef3f1229c0d25,
-        type: 3}
-      propertyPath: zombieSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6059196118645738416, guid: 965091bfa4d123442a4ef3f1229c0d25,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.68
-      objectReference: {fileID: 0}
-    - target: {fileID: 8149374913885864017, guid: 965091bfa4d123442a4ef3f1229c0d25,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 5.3746405
-      objectReference: {fileID: 0}
     - target: {fileID: 8274590014730783726, guid: 965091bfa4d123442a4ef3f1229c0d25,
         type: 3}
       propertyPath: m_LocalPosition.z
