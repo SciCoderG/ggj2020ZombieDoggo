@@ -8,15 +8,17 @@ public class MainMenu_Management : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField]
     private string gameScene;
-
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private string mainMenu;
 
     public void startGame()
     {
         SceneManager.LoadScene(gameScene);
+    }
+
+    public void loadMainMenu()
+    {
+        SceneManager.LoadScene(mainMenu);
     }
 
     public void openCreditScene()
