@@ -47,7 +47,7 @@ public class PickupItem : MonoBehaviour
         pickupCollider.enabled = false;
     }
 
-    public void Drop(float deactivationTime)
+    public void Drop()
     {
         root.SetParent(null);
         IsCarried = false;
@@ -58,7 +58,8 @@ public class PickupItem : MonoBehaviour
 
     public void DestroyItself()
     {
-        Drop(2.0f);
+        Drop();
+        pickupCollider.enabled = false;
         Destroy(root.gameObject, 1.9f);
     }
 }

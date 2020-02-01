@@ -9,6 +9,8 @@ public class PickupGrabber : MonoBehaviour
     private Transform grabbingPoint = null;
     [SerializeField]
     private float deactivationTimeAfterDrop = 2.0f;
+    [SerializeField]
+    private float waitTimeBeforeThrowItem = 0.5f;
 
     private PickupItem currentlyAttachedItem = null;
 
@@ -61,10 +63,15 @@ public class PickupGrabber : MonoBehaviour
     public void DropCurrentlyAttachedItem()
     {
         StartCoroutine(WaitBeforeNextPickup());
-
         doggoAnimator.SetTrigger("DropTrigger");
 
-        currentlyAttachedItem.Drop(deactivationTimeAfterDrop);
+        StartCoroutine(WaitBeforeStartDrop());
+    }
+
+    private IEnumerator WaitBeforeStartDrop()
+    {
+        yield return new WaitForSeconds(waitTimeBeforeThrowItem);
+        currentlyAttachedItem.Drop();
         currentlyAttachedItem = null;
     }
 
