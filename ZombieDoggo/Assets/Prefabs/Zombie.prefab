@@ -361,3 +361,4 @@ MonoBehaviour:
   lifeSpan: 25
   doggo: {fileID: 0}
   followDogCamera: {fileID: 0}
+  dropArea: {fileID: 8648036031223706629}
