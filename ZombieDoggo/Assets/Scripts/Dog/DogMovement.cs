@@ -23,13 +23,10 @@ public class DogMovement : MonoBehaviour
     private Rigidbody dogRigidBody = null;
     private CMRotateTowards rotateTowardsScript = null;
 
+    [SerializeField]
     private Animator doggoAnimator = null;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        doggoAnimator = this.gameObject.GetComponent<Animator>();    
-    }
+  
 
     void Awake()
     {
@@ -53,8 +50,8 @@ public class DogMovement : MonoBehaviour
         DampVelocity(velocityChange);
         ClampVelocity();
         UpdateRotation();
-        doggoAnimator.SetFloat("velocityX", dogRigidBody.velocity.x);
-        doggoAnimator.SetFloat("velocityZ", dogRigidBody.velocity.z);
+        doggoAnimator.SetFloat("velocityX", Mathf.Abs(dogRigidBody.velocity.x));
+        doggoAnimator.SetFloat("velocityZ", Mathf.Abs(dogRigidBody.velocity.z));
     }
 
     private void DampVelocity(Vector3 velocityChange)
