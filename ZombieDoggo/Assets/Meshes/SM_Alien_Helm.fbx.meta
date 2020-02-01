@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6292cd79637b8a148934e84d97f56e2c
+guid: 1686861bdd323bd4284f8c79abe1890f
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Colorswatch
-    second: {fileID: 2100000, guid: 172e5873d1bdb3f498bac4e133734607, type: 2}
+      name: No Name
+    second: {fileID: 2100000, guid: 28ae3275eeccb624aa02cb3486b81ce0, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
