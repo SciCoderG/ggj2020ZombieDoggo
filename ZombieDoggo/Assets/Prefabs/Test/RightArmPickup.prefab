@@ -7,6 +7,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2132082420, guid: 78171095db8dfb44aa067d8451241306, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2173843464344317706, guid: 78171095db8dfb44aa067d8451241306,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 3953346825064875905, guid: 78171095db8dfb44aa067d8451241306,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -65,7 +74,17 @@ PrefabInstance:
     - target: {fileID: 3953346825064875910, guid: 78171095db8dfb44aa067d8451241306,
         type: 3}
       propertyPath: m_Name
-      value: MasterPickup
+      value: RightArmPickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 7898995650611267703, guid: 78171095db8dfb44aa067d8451241306,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7898995650611267703, guid: 78171095db8dfb44aa067d8451241306,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78171095db8dfb44aa067d8451241306, type: 3}

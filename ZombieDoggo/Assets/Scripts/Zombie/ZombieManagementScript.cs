@@ -2,59 +2,66 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator), typeof(Rigidbody))]
 public class ZombieManagementScript : MonoBehaviour
 {
     [SerializeField]
     private float lifeSpan = 25.0f;
     [SerializeField]
-    private GameObject doggo = null;
-    [SerializeField]
-    private Camera followDogCamera = null;
+    private float zombieSpeed = 1.0f;
     [SerializeField]
     private DropItemArea dropArea = null;
-	[SerializeField]
-    private float grabZOffset = 5f;
 
     private Animator zombieAnimator = null;
-    private bool canGrab = false;
-    private bool isDoggoColliding = false;
+    private Rigidbody zombieRB = null;
 
-
-    private void Awake()
-    {
-        if (null == doggo)
-            doggo = FindObjectOfType<DogMovement>().gameObject;
-        if (null == followDogCamera)
-            followDogCamera = FindObjectOfType<FollowDogCameraMovement>().GetComponent<Camera>();
-    }
+    private Vector3 movementDirection = Vector3.forward;
 
     // Start is called before the first frame update
     void Start()
     {
         zombieAnimator = GetComponent<Animator>();
-    }
-
-
-    void Update()
-    {
-        if (Input.GetButtonDown("Grabbing") && canGrab)
-        {
-            GrabZombie();
-        }
+        zombieRB = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!canGrab || transform.parent == null) 
+        if (transform.parent == null) 
         {
-            transform.Translate(Vector3.forward * Time.deltaTime);
+            zombieRB.velocity = movementDirection * zombieSpeed;
+            //transform.Translate(Vector3.forward * Time.deltaTime);
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Vector3 normal = collision.GetContact(0).normal;
+        if (Mathf.Abs(normal.x) > 0)
+        {
+            movementDirection = Vector3.right * Mathf.Sign(normal.x) + Vector3.back * 0.1f;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        StartCoroutine(ReturnToWalkingForward());
+    }
+
+    private IEnumerator ReturnToWalkingForward()
+    {
+        yield return new WaitForSeconds(0.5f);
+        movementDirection = Vector3.forward;
     }
 
     void OnTriggerEnter(Collider col)
     {
-        if(col.GetComponent<EnvironmentalObjects>() != null)
+        CheckIfHitEnvironmental(col);
+    }
+
+    private void CheckIfHitEnvironmental(Collider col)
+    {
+        if (col.GetComponent<EnvironmentalObjects>() != null)
         {
             lifeSpan -= col.gameObject.GetComponent<EnvironmentalObjects>().damageValue;
             if (lifeSpan < 0)
@@ -68,46 +75,17 @@ public class ZombieManagementScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    public void StartDragging()
     {
-        if (other.GetComponent<DogMovement>() != null)
-        {
-           canGrab = true;
-        }
+        zombieAnimator.SetBool("isDragged", true);
     }
 
-    private void OnTriggerExit(Collider other)
+    public void StopDragging()
     {
-        if (other.GetComponent<DogMovement>() != null)
-        {
-            canGrab = false;
-        }
-    }
-
-    private void GrabZombie()
-    {
-        followDogCamera.GetComponent<FollowDogCameraMovement>().IsZooming = true;
-        transform.SetParent(doggo.transform.Find("GrabbingPoint").transform);
-        this.transform.localPosition = new Vector3(0, transform.localPosition.y, grabZOffset);
-
-        zombieAnimator.SetTrigger("IsCarriedByDoggo");
-
-        doggo.GetComponent<DogMovement>().slowDownWhileGrabbing = true;
-
-        StartCoroutine(AnimationCoroutine());
-    }
-
-    IEnumerator AnimationCoroutine()
-    {
-        doggo.GetComponent<Animator>().SetBool("isDragging", true);
-
-        yield return new WaitForSeconds(0.75f);
-        doggo.GetComponent<DogMovement>().slowDownWhileGrabbing = false;
-        followDogCamera.GetComponent<FollowDogCameraMovement>().IsZooming = false;
-        transform.parent = null;
-        canGrab = false;
+        zombieAnimator.SetBool("isDragged", false);
         this.transform.forward = Vector3.forward;
-        doggo.GetComponent<Animator>().SetBool("isDragging", false);
+        this.transform.parent = null;
     }
+
 }
 
