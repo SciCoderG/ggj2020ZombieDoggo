@@ -9,7 +9,7 @@ public class FollowDogCameraMovement : MonoBehaviour
 
     private Vector3 initialOffset = Vector3.zero;
    
-    public bool isZooming = false;
+    public bool IsZooming { get; set; }
     private float startFieldOfView;
     private float delta = 0f;
     
@@ -36,7 +36,7 @@ public class FollowDogCameraMovement : MonoBehaviour
     void Update()
     {
 
-       if (isZooming)
+       if (IsZooming)
         {
             if (delta > startFieldOfView - zoomValue)
             {
