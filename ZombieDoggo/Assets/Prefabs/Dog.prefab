@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 960469572}
   - component: {fileID: 960469573}
   m_Layer: 8
-  m_Name: PickupArea
+  m_Name: PickupGrabber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,6 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grabbingPoint: {fileID: 8028023524973129819}
+  deactivationTimeAfterDrop: 2
 --- !u!1 &3112265597178999586
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: {x: 50, y: 50}
-  maxVelocity: {x: 15, y: 15}
+  maxVelocity: {x: 5, y: 5}
 --- !u!136 &364536213
 CapsuleCollider:
   m_ObjectHideFlags: 0
