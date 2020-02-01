@@ -19,7 +19,7 @@ public class DropItemArea : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         PickupItem item = other.GetComponent<PickupItem>();
-        if(null != item)
+        if(null != item && item.IsCarried)
         {
             ItemAttachmentPoint attachmentPoint = FindRandomFreeAttachmentPoint();
             if(null != attachmentPoint)
@@ -34,8 +34,7 @@ public class DropItemArea : MonoBehaviour
         Transform bone = attachmentPoint.transform;
         if (null != bone)
         {
-            item.transform.SetParent(bone);
-            item.transform.localPosition = item.transform.position - item.PickupAttachPoint.position;
+            item.AttachToZombie(bone);
             Destroy(item);
         }
     }
