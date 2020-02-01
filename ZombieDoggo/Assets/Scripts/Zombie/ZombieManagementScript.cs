@@ -7,7 +7,7 @@ public class ZombieManagementScript : MonoBehaviour
     [SerializeField]
     private float lifeSpan = 25.0f;
     [SerializeField]
-    private Transform doggo = null;
+    private GameObject doggo = null;
     [SerializeField]
     private Camera followDogCamera = null;
 
@@ -60,7 +60,8 @@ public class ZombieManagementScript : MonoBehaviour
             if (isGrabbing)
             {
                 followDogCamera.GetComponent<FollowDogCameraMovement>().isZooming = true;
-                transform.SetParent(doggo);
+                transform.SetParent(doggo.transform);
+                doggo.GetComponent<DogMovement>().slowDownWhileGrabbing = true;
                 StartCoroutine(AnimationCoroutine());
             }
         }
@@ -70,6 +71,7 @@ public class ZombieManagementScript : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         followDogCamera.GetComponent<FollowDogCameraMovement>().isZooming = false;
+        doggo.GetComponent<DogMovement>().slowDownWhileGrabbing = false;
         transform.parent = null;
         isGrabbing = false;
     }
