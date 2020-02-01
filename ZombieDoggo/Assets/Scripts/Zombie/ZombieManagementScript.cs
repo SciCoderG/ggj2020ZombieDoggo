@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Animator), typeof(Rigidbody))]
 public class ZombieManagementScript : MonoBehaviour
@@ -58,7 +59,6 @@ public class ZombieManagementScript : MonoBehaviour
     {
         CheckIfHitEnvironmental(col);
     }
-
     private void CheckIfHitEnvironmental(Collider col)
     {
         if (col.GetComponent<EnvironmentalObjects>() != null)
@@ -86,6 +86,7 @@ public class ZombieManagementScript : MonoBehaviour
         this.transform.forward = Vector3.forward;
         this.transform.parent = null;
     }
+
 
 }
 
