@@ -215,9 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16b5384cc797e9b42b55f06c62715b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followObject: {fileID: 364536212}
   zoomValue: 15
-  isZooming: 0
 --- !u!20 &337936603 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 664175874432587915, guid: 9dd029504408c7f4892ff1967afb7520,
@@ -362,8 +360,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeSpan: 25
-  doggo: {fileID: 7222214242075987834}
+  doggo: {fileID: 364536212}
   followDogCamera: {fileID: 337936603}
+  grabZOffset: 0.75
 --- !u!1001 &1903949835
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -703,6 +702,16 @@ PrefabInstance:
       propertyPath: dogRigidBody
       value: 
       objectReference: {fileID: 364536217}
+    - target: {fileID: 7222214241746333423, guid: de9113c0cb928ce499e1f8ba577193ae,
+        type: 3}
+      propertyPath: acceleration.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222214241746333423, guid: de9113c0cb928ce499e1f8ba577193ae,
+        type: 3}
+      propertyPath: acceleration.y
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7222214242580699662, guid: de9113c0cb928ce499e1f8ba577193ae,
         type: 3}
       propertyPath: m_Layer
