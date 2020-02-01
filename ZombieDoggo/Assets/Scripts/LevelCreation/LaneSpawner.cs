@@ -23,8 +23,9 @@ public class LaneSpawner : MonoBehaviour
     {
         Lane prefabTypeToSpawn = Utilities.RandomFromArray(lanePrefabs);
 
-        Lane spawnedLane = Instantiate(prefabTypeToSpawn.gameObject).GetComponent<Lane>();
+        Lane spawnedLane = Instantiate(prefabTypeToSpawn.gameObject).GetComponent<Lane>();  
         spawnedLane.transform.position = origin.NextLaneSpawnPoint.position;
         spawnedLane.OnSpawnNextLane += OnSpawnNewLane;
+        spawnedLane.Spawn();
     }
 }
