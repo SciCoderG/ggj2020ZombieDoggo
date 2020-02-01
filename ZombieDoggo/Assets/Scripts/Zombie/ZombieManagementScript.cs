@@ -15,6 +15,7 @@ public class ZombieManagementScript : MonoBehaviour
 
     private Animator zombieAnimator = null;
     private Rigidbody zombieRB = null;
+    private bool isDragged = false;
 
     private Vector3 movementDirection = Vector3.forward;
 
@@ -28,19 +29,25 @@ public class ZombieManagementScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (transform.parent == null) 
-        {
-            zombieRB.velocity = movementDirection * zombieSpeed;
+        //if (!isDragged) 
+        //{
+        Vector3 newPlanarVelocity = movementDirection * zombieSpeed;
+        zombieRB.velocity = new Vector3(newPlanarVelocity.x, zombieRB.velocity.y, newPlanarVelocity.z);
             //transform.Translate(Vector3.forward * Time.deltaTime);
-        }
+        //}
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         Vector3 normal = collision.GetContact(0).normal;
-        if (Mathf.Abs(normal.z) > 0.5f)
+        if (Mathf.Abs(normal.z) > 0.5f && Mathf.Abs(normal.y) < 0.2f)
         {
             movementDirection = Vector3.right * Mathf.Sign(normal.x) + Vector3.back * 0.1f;
+        }
+        else
+        {
+            movementDirection = Vector3.forward;
+
         }
     }
 
