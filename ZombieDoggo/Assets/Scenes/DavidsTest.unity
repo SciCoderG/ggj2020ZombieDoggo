@@ -136,7 +136,7 @@ PrefabInstance:
     - target: {fileID: 3186670547669737138, guid: d5ac2ccc878c83448af908c91835dbd6,
         type: 3}
       propertyPath: m_Constraints
-      value: 116
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 3186670547669737138, guid: d5ac2ccc878c83448af908c91835dbd6,
         type: 3}
@@ -197,6 +197,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186670548108968483, guid: d5ac2ccc878c83448af908c91835dbd6,
+        type: 3}
+      propertyPath: zombieSpeed
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5ac2ccc878c83448af908c91835dbd6, type: 3}
@@ -506,11 +511,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 530445692115432213, guid: 5106140fd7981b1479cfec3115b077ab,
-        type: 3}
-      propertyPath: m_Name
-      value: LaneObjects
-      objectReference: {fileID: 0}
     - target: {fileID: 6967783087068738977, guid: 5106140fd7981b1479cfec3115b077ab,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -570,16 +570,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpawningLane1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6967783087669264280, guid: 5106140fd7981b1479cfec3115b077ab,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6967783087669264287, guid: 5106140fd7981b1479cfec3115b077ab,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5106140fd7981b1479cfec3115b077ab, type: 3}

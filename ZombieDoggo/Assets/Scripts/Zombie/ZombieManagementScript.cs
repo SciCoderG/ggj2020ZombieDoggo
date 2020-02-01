@@ -37,7 +37,7 @@ public class ZombieManagementScript : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Vector3 normal = collision.GetContact(0).normal;
-        if (Mathf.Abs(normal.x) > 0)
+        if (Mathf.Abs(normal.z) > 0.5f)
         {
             movementDirection = Vector3.right * Mathf.Sign(normal.x) + Vector3.back * 0.1f;
         }
