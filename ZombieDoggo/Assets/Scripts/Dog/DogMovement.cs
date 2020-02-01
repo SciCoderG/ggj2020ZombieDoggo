@@ -18,8 +18,7 @@ public class DogMovement : MonoBehaviour
     private float slowDownMultiplierOnGrab = 0.5f;
     public Vector2 MaxVelocity { get { return maxVelocity; } set { maxVelocity = value; } }
    
-    public bool slowDownWhileGrabbing { get; set; }
-    private float slowValue = 1f;
+    public bool SlowDownWhileDragging { get; set; }
 
     private Rigidbody dogRigidBody = null;
     private CMRotateTowards rotateTowardsScript = null;
@@ -39,6 +38,11 @@ public class DogMovement : MonoBehaviour
         rotateTowardsScript = GetComponent<CMRotateTowards>();
     }
 
+    private void Update()
+    {
+        
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -46,6 +50,16 @@ public class DogMovement : MonoBehaviour
         velocityChange += ProcessHorizontalInput();
         velocityChange += ProcessVerticalInput();
         dogRigidBody.velocity += velocityChange * Time.fixedDeltaTime;
+
+        DampVelocity(velocityChange);
+        ClampVelocity();
+        UpdateRotation();
+        doggoAnimator.SetFloat("velocityX", dogRigidBody.velocity.x);
+        doggoAnimator.SetFloat("velocityZ", dogRigidBody.velocity.z);
+    }
+
+    private void DampVelocity(Vector3 velocityChange)
+    {
         if (velocityChange.sqrMagnitude < 0.2f)
         {
             Vector3 damp = -dogRigidBody.velocity.normalized * deccelerationSpeed * Time.fixedDeltaTime;
@@ -56,22 +70,18 @@ public class DogMovement : MonoBehaviour
             damp.y = 0.0f;
             dogRigidBody.velocity += damp;
         }
-
-        ClampVelocity();
-        UpdateRotation();
-        doggoAnimator.SetFloat("velocityX", dogRigidBody.velocity.x);
-        doggoAnimator.SetFloat("velocityZ", dogRigidBody.velocity.z);
     }
 
     private void ClampVelocity()
     {
-        slowValue = slowDownWhileGrabbing ? slowDownMultiplierOnGrab : 1f;
+        float slowValueX = SlowDownWhileDragging ? slowDownMultiplierOnGrab : 1f;
+        float slowValueY = SlowDownWhileDragging ? 0.0f : 1f;
 
         dogRigidBody.velocity = Utilities.ClampVector(
             dogRigidBody.velocity, new Vector3(
-                maxVelocity.x * slowValue,
+                maxVelocity.x * slowValueX,
                 10.0f,
-                maxVelocity.y * slowValue));
+                maxVelocity.y * slowValueY));
     }
 
     private void UpdateRotation()
