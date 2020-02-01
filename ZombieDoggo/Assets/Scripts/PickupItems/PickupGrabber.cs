@@ -54,7 +54,7 @@ public class PickupGrabber : MonoBehaviour
 
     public void DropCurrentlyAttachedItem()
     {
-        currentlyAttachedItem.transform.SetParent(null);
+        currentlyAttachedItem.Drop(deactivationTimeAfterDrop);
         currentlyAttachedItem = null;
     }
 }

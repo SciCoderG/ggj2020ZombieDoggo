@@ -360,3 +360,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifeSpan: 25
   doggo: {fileID: 0}
+  followDogCamera: {fileID: 0}
