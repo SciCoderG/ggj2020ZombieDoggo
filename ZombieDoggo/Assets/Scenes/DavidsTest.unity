@@ -136,7 +136,7 @@ PrefabInstance:
     - target: {fileID: 3186670547669737138, guid: d5ac2ccc878c83448af908c91835dbd6,
         type: 3}
       propertyPath: m_Constraints
-      value: 116
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 3186670547669737138, guid: d5ac2ccc878c83448af908c91835dbd6,
         type: 3}
@@ -197,6 +197,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186670548108968483, guid: d5ac2ccc878c83448af908c91835dbd6,
+        type: 3}
+      propertyPath: zombieSpeed
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5ac2ccc878c83448af908c91835dbd6, type: 3}
@@ -430,6 +435,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d9a633090e19bd4bbe830eff9023f52, type: 3}
+--- !u!1 &1628333322 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2023717843683948276, guid: 965091bfa4d123442a4ef3f1229c0d25,
+    type: 3}
+  m_PrefabInstance: {fileID: 8660357482475922240}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1628333323
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628333322}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 361ac702719b2ad42a1c10498fae790b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1709949263
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -506,11 +536,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 530445692115432213, guid: 5106140fd7981b1479cfec3115b077ab,
-        type: 3}
-      propertyPath: m_Name
-      value: LaneObjects
-      objectReference: {fileID: 0}
     - target: {fileID: 6967783087068738977, guid: 5106140fd7981b1479cfec3115b077ab,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -574,12 +599,7 @@ PrefabInstance:
     - target: {fileID: 6967783087669264280, guid: 5106140fd7981b1479cfec3115b077ab,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6967783087669264287, guid: 5106140fd7981b1479cfec3115b077ab,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5106140fd7981b1479cfec3115b077ab, type: 3}
@@ -659,6 +679,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1888388900434695549, guid: 965091bfa4d123442a4ef3f1229c0d25,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3880920881100379716, guid: 965091bfa4d123442a4ef3f1229c0d25,
         type: 3}
       propertyPath: m_Layer
