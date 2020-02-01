@@ -10,6 +10,8 @@ public class ZombieManagementScript : MonoBehaviour
     private Transform doggo = null;
     [SerializeField]
     private Camera followDogCamera = null;
+    [SerializeField]
+    private DropItemArea dropArea = null;
 
     private Animator zombieAnimator = null;
     private bool canGrab = false;

@@ -15,6 +15,17 @@ namespace de.crystalmesh
             return clamped;
         }
 
+        public static T RandomFromArray<T>(T[] list)
+        {
+            T randomItem = default(T);
+            if (list.Length > 0)
+            {
+                int randomEntry = Random.Range(0, list.Length - 1);
+                randomItem = list[randomEntry];
+            }
+            return randomItem;
+        }
+
         public static T RandomFromList<T>(List<T> list)
         {
             T randomItem = default(T);
