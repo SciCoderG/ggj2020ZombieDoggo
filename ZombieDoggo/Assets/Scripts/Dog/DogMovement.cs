@@ -13,7 +13,9 @@ public class DogMovement : MonoBehaviour
     [SerializeField]
     private Vector2 maxVelocity = new Vector2(30.0f, 20.0f);
     [SerializeField]
-    private float jumpStrength = 2.0f;
+    float deccelerationSpeed = 2.0f;
+    [SerializeField]
+    private float slowDownMultiplierOnGrab = 0.5f;
     public Vector2 MaxVelocity { get { return maxVelocity; } set { maxVelocity = value; } }
    
     public bool slowDownWhileGrabbing { get; set; }
@@ -43,23 +45,33 @@ public class DogMovement : MonoBehaviour
         Vector3 velocityChange = Vector3.zero;
         velocityChange += ProcessHorizontalInput();
         velocityChange += ProcessVerticalInput();
-
-        if (slowDownWhileGrabbing) 
+        dogRigidBody.velocity += velocityChange * Time.fixedDeltaTime;
+        if (velocityChange.sqrMagnitude < 0.2f)
         {
-            slowValue = 0.5f;
+            Vector3 damp = -dogRigidBody.velocity.normalized * deccelerationSpeed * Time.fixedDeltaTime;
+            if (Mathf.Abs(damp.x) > Mathf.Abs(dogRigidBody.velocity.x))
+                damp.x = 0.0f;
+            if (Mathf.Abs(damp.z) > Mathf.Abs(dogRigidBody.velocity.z))
+                damp.z = 0.0f;
+            damp.y = 0.0f;
+            dogRigidBody.velocity += damp;
         }
-        else
-        {
-            slowValue = 1f;
-        }
 
-
-        dogRigidBody.AddForce(velocityChange * Time.fixedDeltaTime, accelerationForceMode);
-        dogRigidBody.velocity = Utilities.ClampVector(dogRigidBody.velocity, new Vector3(maxVelocity.x * slowValue, 0.0f, maxVelocity.y * slowValue));
-
+        ClampVelocity();
         UpdateRotation();
         doggoAnimator.SetFloat("velocityX", dogRigidBody.velocity.x);
         doggoAnimator.SetFloat("velocityZ", dogRigidBody.velocity.z);
+    }
+
+    private void ClampVelocity()
+    {
+        slowValue = slowDownWhileGrabbing ? slowDownMultiplierOnGrab : 1f;
+
+        dogRigidBody.velocity = Utilities.ClampVector(
+            dogRigidBody.velocity, new Vector3(
+                maxVelocity.x * slowValue,
+                10.0f,
+                maxVelocity.y * slowValue));
     }
 
     private void UpdateRotation()
@@ -79,7 +91,6 @@ public class DogMovement : MonoBehaviour
     {
         Vector3 horInputVec = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
         Vector3 velocityChange = Vector3.zero;
-        if (Mathf.Abs(dogRigidBody.velocity.x) < maxVelocity.x)
             velocityChange = horInputVec* acceleration.x;
         return velocityChange;
     }
@@ -88,7 +99,6 @@ public class DogMovement : MonoBehaviour
     {
         Vector3 vertInputVec = new Vector3(0f, 0f, Input.GetAxis("Vertical"));
         Vector3 velocityChange = Vector3.zero;
-        if (Mathf.Abs(dogRigidBody.velocity.z) < maxVelocity.y)
             velocityChange = vertInputVec* acceleration.y;
         return velocityChange;
     }
