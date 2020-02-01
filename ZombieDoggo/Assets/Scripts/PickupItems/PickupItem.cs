@@ -6,10 +6,12 @@ using UnityEngine;
 public class PickupItem : MonoBehaviour
 {
     [SerializeField]
-    private string boneTransformName = "Bone";
-    [SerializeField]
     private Transform attachPoint = null;
-    public string BoneAttachTransformName { get { return boneTransformName; } }
     public Transform PickupAttachPoint { get { return attachPoint; } }
 
+
+    public void Drop(float deactivationTime)
+    {
+        this.transform.parent = null;
+    }
 }

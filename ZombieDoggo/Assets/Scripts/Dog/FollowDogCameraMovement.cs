@@ -5,8 +5,6 @@ using UnityEngine;
 public class FollowDogCameraMovement : MonoBehaviour
 {
     [SerializeField]
-    private GameObject followObject = null;
-    [SerializeField]
     public float zoomValue = 0f;
 
     private Vector3 initialOffset = Vector3.zero;
@@ -15,19 +13,28 @@ public class FollowDogCameraMovement : MonoBehaviour
     private float startFieldOfView;
     private float delta = 0f;
     
+    private DogMovement dogObject = null;   
+
+
+
+    private void Awake()
+    {
+        if (null == dogObject)
+            dogObject = FindObjectOfType<DogMovement>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        initialOffset = transform.position - followObject.transform.position;
+     
         startFieldOfView = this.GetComponent<Camera>().fieldOfView;
         delta = startFieldOfView;
+        initialOffset = transform.position - dogObject.transform.position;   
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.transform.position = new Vector3(transform.position.x, transform.position.y, followObject.transform.position.z + initialOffset.z);
 
        if (isZooming)
         {
@@ -44,5 +51,7 @@ public class FollowDogCameraMovement : MonoBehaviour
                 this.GetComponent<Camera>().fieldOfView = delta;
             }
         }
+        this.transform.position = new Vector3(transform.position.x, transform.position.y, dogObject.transform.position.z + initialOffset.z);
+
     }
 }

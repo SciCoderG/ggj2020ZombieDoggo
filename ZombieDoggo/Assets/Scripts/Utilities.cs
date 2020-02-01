@@ -14,6 +14,17 @@ namespace de.crystalmesh
             clamped.z = Mathf.Clamp(inputVelocity.z, -maxAbsVelocity.z, maxAbsVelocity.z);
             return clamped;
         }
+
+        public static T RandomFromList<T>(List<T> list)
+        {
+            T randomItem = default(T);
+            if(list.Count > 0)
+            {
+                int randomEntry = Random.Range(0, list.Count - 1);
+                randomItem = list[randomEntry];
+            }
+            return randomItem;
+        }
     }
 }
 
