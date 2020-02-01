@@ -5,31 +5,34 @@ using UnityEngine;
 public class ZombieMovementScript : MonoBehaviour
 {
     [SerializeField]
-    private float acceleration = 20.0f;
-    [SerializeField]
-    private float maxVelocity = 15.0f;
-    [SerializeField]
     private float lifeSpan = 25.0f;
-    
+    [SerializeField]
+    private Transform doggo = null;
 
-    private ForceMode accelerationForceMode = ForceMode.VelocityChange;
-
-    private Rigidbody zombieRigidBody = null;
     private Animator zombieAnimator = null;
+    private bool isGrabbing = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        zombieRigidBody = GetComponent<Rigidbody>();
         zombieAnimator = GetComponent<Animator>();
+    }
+
+
+    void Update()
+    {
+        if (Input.GetButtonDown("Grabbing"))
+        {
+            isGrabbing = true;
+        }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (zombieRigidBody.velocity.magnitude < maxVelocity)
+        if (!isGrabbing | transform.parent == null) 
         {
-            zombieRigidBody.AddForce(Vector3.forward * acceleration * Time.fixedDeltaTime, accelerationForceMode);
+            transform.Translate(Vector3.forward * Time.deltaTime);
         }
     }
 
@@ -37,12 +40,32 @@ public class ZombieMovementScript : MonoBehaviour
     {
         if(col.GetComponent<EnvironmentalObjects>() != null)
         {
+            lifeSpan -= col.gameObject.GetComponent<EnvironmentalObjects>().damageValue;
             if (lifeSpan < 0)
             {
-                lifeSpan -= col.gameObject.GetComponent<EnvironmentalObjects>().damageValue;
                 zombieAnimator.SetTrigger("IsStumbling");
             }
+            else
+            {
+                zombieAnimator.SetTrigger("IsDying");
+            }
         }
+
+        if(col.GetComponent<DogMovement>() != null)
+        {
+            if (isGrabbing)
+            {
+                transform.SetParent(doggo);
+                StartCoroutine(AnimationCoroutine());
+            }
+        }
+    }
+
+    IEnumerator AnimationCoroutine()
+    {
+        yield return new WaitForSeconds(1f);
+        transform.parent = null;
+        isGrabbing = false;
     }
 }
 
