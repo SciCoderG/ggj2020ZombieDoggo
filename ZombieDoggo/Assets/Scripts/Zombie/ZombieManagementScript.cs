@@ -11,19 +11,46 @@ public class ZombieManagementScript : MonoBehaviour
     [SerializeField]
     private float zombieSpeed = 1.0f;
     [SerializeField]
+    private float increaseMultiplier = 0.01f;
+    [SerializeField]
+    private float maxSpeed = 4.0f;
+
+    public float ZombieSpeed { get { return zombieSpeed; } set { zombieSpeed = value; } }
+
+    [SerializeField]
     private DropItemArea dropArea = null;
 
     private Animator zombieAnimator = null;
+    public Animator ZombieAnimator { get { return zombieAnimator; } }
+
     private Rigidbody zombieRB = null;
+
     private bool isDragged = false;
 
     private Vector3 movementDirection = Vector3.forward;
 
+
+    private Vector3 originalPosition = Vector3.zero;
+    private float originalSpeed = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
+        originalSpeed = zombieSpeed;
+        originalPosition = transform.position;
         zombieAnimator = GetComponent<Animator>();
         zombieRB = GetComponent<Rigidbody>();
+    }
+
+    public void StopZombie()
+    {
+        zombieRB.velocity = Vector3.zero;
+        zombieSpeed = 0.0f;
+    }
+
+    public void PlayDeathAnimation()
+    {
+        zombieAnimator.SetTrigger("IsDying");
     }
 
     // Update is called once per frame
@@ -34,6 +61,14 @@ public class ZombieManagementScript : MonoBehaviour
         Vector3 newPlanarVelocity = movementDirection * zombieSpeed;
         float clampedVerticalSpeed = Mathf.Clamp(zombieRB.velocity.y, -5.0f, 5.0f);
         zombieRB.velocity = new Vector3(newPlanarVelocity.x, clampedVerticalSpeed, newPlanarVelocity.z);
+        IncreaseSpeed();
+    }
+
+    private void IncreaseSpeed()
+    {
+        float distanceToOrigin = Mathf.Abs(transform.position.z - originalPosition.z);
+        zombieSpeed = distanceToOrigin * increaseMultiplier + originalSpeed;
+        zombieSpeed = Mathf.Clamp(zombieSpeed, 0, maxSpeed);
     }
 
     private void OnCollisionEnter(Collision collision)
