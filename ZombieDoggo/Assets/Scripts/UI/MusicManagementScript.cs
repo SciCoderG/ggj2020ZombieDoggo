@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MusicManagementScript : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class MusicManagementScript : MonoBehaviour
      
     void Awake()
     {
+
         if (instance != null && instance != this) {
             Destroy(this.gameObject);
             return;
@@ -18,5 +20,13 @@ public class MusicManagementScript : MonoBehaviour
             instance = this;
         }
         DontDestroyOnLoad(this.gameObject);
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        if(SceneManager.GetActiveScene().name == "DavidsTest")
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
