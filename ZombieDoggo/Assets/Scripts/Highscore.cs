@@ -9,6 +9,10 @@ public class Highscore : MonoBehaviour
     private GameObject zombie = null;
     [SerializeField]
     private Text textMeters = null;
+    [SerializeField]
+    private string highScorePrefsName = "Highscores";
+    [SerializeField]
+    private int numHighscores = 10;
 
     private int currentPosition = 0;
     private int startPosition = 0;
@@ -27,5 +31,17 @@ public class Highscore : MonoBehaviour
 
         counter = (currentPosition - startPosition)/3;
         textMeters.text = counter.ToString() + " m";
+    }
+
+    private void OnDestroy()
+    {
+        int[] highScores = PlayerPrefsX.GetIntArray(highScorePrefsName, 0, numHighscores);
+        for(int i = 0; i < highScores.Length; ++i)
+        {
+            if(highScores[i]< counter)
+            {
+
+            }
+        }
     }
 }
