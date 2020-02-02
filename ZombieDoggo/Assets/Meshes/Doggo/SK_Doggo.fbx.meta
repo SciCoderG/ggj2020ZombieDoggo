@@ -24,6 +24,9 @@ ModelImporter:
   - first:
       74: -7130164415951478192
     second: DoggoRig|RunCycle
+  - first:
+      74: 553806257807934798
+    second: Plane|DefaultAction
   externalObjects: {}
   materials:
     materialImportMode: 1
