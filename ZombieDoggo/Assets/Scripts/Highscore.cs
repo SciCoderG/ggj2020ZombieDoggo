@@ -82,12 +82,14 @@ public class Highscore : MonoBehaviour
         while(index < newIndex)
         {
             newHighscore[index] = original[index];
+            index = index + 1;
         }
         newHighscore[newIndex] = newValue;
         index = newIndex + 1;
         while(index < original.Length)
         {
             newHighscore[index] = original[index - 1];
+            index = index + 1;
         }
         return newHighscore;
     }
