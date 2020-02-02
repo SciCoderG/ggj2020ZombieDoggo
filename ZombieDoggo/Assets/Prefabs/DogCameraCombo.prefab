@@ -49,7 +49,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlPanel: {fileID: 0}
-  hudPanel: {fileID: 8660357481188721917}
 --- !u!1001 &1054210859695005882
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -451,12 +450,6 @@ PrefabInstance:
 --- !u!4 &6059196118645738416 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3186670547669737139, guid: d5ac2ccc878c83448af908c91835dbd6,
-    type: 3}
-  m_PrefabInstance: {fileID: 8660357482532820227}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8660357481188721917 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1885688318, guid: d5ac2ccc878c83448af908c91835dbd6,
     type: 3}
   m_PrefabInstance: {fileID: 8660357482532820227}
   m_PrefabAsset: {fileID: 0}
