@@ -577,6 +577,12 @@ PrefabInstance:
       propertyPath: redImage
       value: 
       objectReference: {fileID: 601294972}
+    - target: {fileID: 4872167843831886086, guid: 66528474b4133ad41b50d6462abdf24f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -3697660735176622863, guid: 355bc4ff170bbb0409109e93d737aedb,
+        type: 3}
     - target: {fileID: 5166871502312529338, guid: 66528474b4133ad41b50d6462abdf24f,
         type: 3}
       propertyPath: m_Layer
@@ -602,6 +608,12 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.01
       objectReference: {fileID: 0}
+    - target: {fileID: 6506771505414375779, guid: 66528474b4133ad41b50d6462abdf24f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -3697660735176622863, guid: 355bc4ff170bbb0409109e93d737aedb,
+        type: 3}
     - target: {fileID: 8987759305210105772, guid: 66528474b4133ad41b50d6462abdf24f,
         type: 3}
       propertyPath: m_LocalPosition.x
