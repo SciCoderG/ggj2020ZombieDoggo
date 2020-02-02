@@ -10,11 +10,17 @@ public class ZombieManagementScript : MonoBehaviour
     private float lifeSpan = 25.0f;
     [SerializeField]
     private float zombieSpeed = 1.0f;
+
+    public float ZombieSpeed { get { return zombieSpeed; } set { zombieSpeed = value; } }
+
     [SerializeField]
     private DropItemArea dropArea = null;
 
     private Animator zombieAnimator = null;
+    public Animator ZombieAnimator { get { return zombieAnimator; } }
+
     private Rigidbody zombieRB = null;
+
     private bool isDragged = false;
 
     private Vector3 movementDirection = Vector3.forward;
@@ -24,6 +30,17 @@ public class ZombieManagementScript : MonoBehaviour
     {
         zombieAnimator = GetComponent<Animator>();
         zombieRB = GetComponent<Rigidbody>();
+    }
+
+    public void StopZombie()
+    {
+        zombieRB.velocity = Vector3.zero;
+        zombieSpeed = 0.0f;
+    }
+
+    public void PlayDeathAnimation()
+    {
+        zombieAnimator.SetTrigger("IsDying");
     }
 
     // Update is called once per frame

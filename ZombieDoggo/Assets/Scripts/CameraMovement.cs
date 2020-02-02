@@ -10,6 +10,24 @@ public class CameraMovement : MonoBehaviour
 
     public Vector3 Target { get; set; }
 
+    public void LerpToRotation(Quaternion quaternion, float speed = 1.5f)
+    {
+        StartCoroutine(RotationRoutine(quaternion, speed));
+    }
+
+    IEnumerator RotationRoutine(Quaternion targetRot, float speed)
+    {
+        Quaternion originalRotation = transform.rotation;
+        float progress = 0.0f;
+        while(progress < 1.0f)
+        {
+            yield return null;
+            progress += Time.deltaTime * speed;
+            transform.rotation = Quaternion.Lerp(originalRotation, targetRot, progress);
+        }
+    }
+
+
     private void Start()
     {
         Target = this.transform.position;
