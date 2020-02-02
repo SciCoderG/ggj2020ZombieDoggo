@@ -16,10 +16,19 @@ public class ItemAttachmentPoint : MonoBehaviour
 
     private PickupItem attachedItem = null;
 
+    private void Awake()
+    {
+        attachedItem = GetComponentInChildren<PickupItem>();
+    }
+
     private void Start()
     {
         if(null == attachedItem)
             DisplayDestroyed();
+        else
+        {
+            AttachItem(attachedItem);
+        }
     }
 
     public void AttachItem(PickupItem item)

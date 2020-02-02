@@ -1,8 +1,23 @@
 fileFormatVersion: 2
-guid: 243dd7e6dab492248a2ca80eb5db29fd
+guid: 4f1702609684c554fb1907eb98987821
 ModelImporter:
   serializedVersion: 19300
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 4359862488752915422
+    second: Armature|DefaultAction
+  - first:
+      74: 6059336001588132254
+    second: Armature|Die
+  - first:
+      74: 7147262102888868242
+    second: Armature|Dragged
+  - first:
+      74: 2336341976047335782
+    second: Armature|Stumble
+  - first:
+      74: 2517152770028793317
+    second: Armature|WalkCycle
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -36,7 +51,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importVisibility: 1
@@ -80,7 +95,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.01
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
@@ -89,7 +104,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
