@@ -9,6 +9,10 @@ public class ItemAttachmentPoint : MonoBehaviour
     private Image greenImage;
     [SerializeField]
     private Image redImage;
+    [SerializeField]
+    private AudioSource zombieAudioSource = null;
+    [SerializeField]
+    private AudioClip clip = null;
     /// <summary>
     /// if at least one child is attached, we're assuming an item is attached, so we return true.
     /// </summary>
@@ -47,6 +51,7 @@ public class ItemAttachmentPoint : MonoBehaviour
             if (greenImage.fillAmount <= 0)
             {
                 DisplayDestroyed();
+                zombieAudioSource.PlayOneShot(clip, 3.0f);
                 attachedItem.DestroyItself();
                 attachedItem = null;
             }

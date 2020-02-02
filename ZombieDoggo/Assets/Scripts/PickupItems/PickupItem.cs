@@ -15,6 +15,7 @@ public class PickupItem : MonoBehaviour
     private Transform attachPoint = null;
     [SerializeField]
     private float dropForce = 10.0f;
+
     public Transform PickupAttachPoint { get { return attachPoint; } }
     public bool IsCarried { get; set; } = false;
 
