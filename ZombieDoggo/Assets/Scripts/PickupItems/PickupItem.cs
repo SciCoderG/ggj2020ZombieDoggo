@@ -57,7 +57,7 @@ public class PickupItem : MonoBehaviour
         pickupCollider.enabled = true;
         pickupCollider.isTrigger = false;
 
-        Vector3 randomDirection = Random.;
+        Vector3 randomDirection = Random.onUnitSphere;
         randomDirection.y = Mathf.Abs(randomDirection.y);
         randomDirection += Vector3.up;
 
