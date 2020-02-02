@@ -1,23 +1,8 @@
 fileFormatVersion: 2
-guid: 4f1702609684c554fb1907eb98987821
+guid: 282bb787d4c9a814993c5fbcec556f5d
 ModelImporter:
   serializedVersion: 19300
-  internalIDToNameTable:
-  - first:
-      74: 4359862488752915422
-    second: Armature|DefaultAction
-  - first:
-      74: 6059336001588132254
-    second: Armature|Die
-  - first:
-      74: 7147262102888868242
-    second: Armature|Dragged
-  - first:
-      74: 2336341976047335782
-    second: Armature|Stumble
-  - first:
-      74: 2517152770028793317
-    second: Armature|WalkCycle
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -104,7 +89,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
