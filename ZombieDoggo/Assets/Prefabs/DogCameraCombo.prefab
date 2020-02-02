@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8660357481563565743}
+  - component: {fileID: 8660357482475922243}
   m_Layer: 0
   m_Name: DogCameraCombo
   m_TagString: Untagged
@@ -35,6 +36,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8660357482475922243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8660357481563565742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c19b75a6f5f21854abff675cc0ba3fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controlPanel: {fileID: 0}
+  hudPanel: {fileID: 8660357481188721917}
 --- !u!1001 &1054210859695005882
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -436,6 +451,12 @@ PrefabInstance:
 --- !u!4 &6059196118645738416 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3186670547669737139, guid: d5ac2ccc878c83448af908c91835dbd6,
+    type: 3}
+  m_PrefabInstance: {fileID: 8660357482532820227}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8660357481188721917 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1885688318, guid: d5ac2ccc878c83448af908c91835dbd6,
     type: 3}
   m_PrefabInstance: {fileID: 8660357482532820227}
   m_PrefabAsset: {fileID: 0}
