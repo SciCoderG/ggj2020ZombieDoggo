@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 8660357481563565743}
   - component: {fileID: 8660357482475922243}
   - component: {fileID: 1021377403}
+  - component: {fileID: 132940203}
   m_Layer: 0
   m_Name: DogCameraCombo
   m_TagString: Untagged
@@ -164,6 +165,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &132940203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8660357481563565742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 434ba1045dd7a7842981e60c9222d47b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yCoordinateForReset: -20
+  dogReference: {fileID: 2023717843683948278}
+  zombieReference: {fileID: 6059196118212794144}
 --- !u!1001 &1054210859695005882
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -171,6 +187,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8660357481563565743}
     m_Modifications:
+    - target: {fileID: 8542917343943983188, guid: d52d47ea3246bb84ea041adb77dd6242,
+        type: 3}
+      propertyPath: maxAllowedLanes
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8542917343943983190, guid: d52d47ea3246bb84ea041adb77dd6242,
         type: 3}
       propertyPath: m_Name
@@ -306,6 +327,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4225763623271409371, guid: 4a061f97841861b4493177010a11ded2,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 4.7e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 4225763623271409371, guid: 4a061f97841861b4493177010a11ded2,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: -2.2476881e-11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4225763623271409371, guid: 4a061f97841861b4493177010a11ded2,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 4.5905e-41
+      objectReference: {fileID: 0}
+    - target: {fileID: 4225763623271409371, guid: 4a061f97841861b4493177010a11ded2,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: -2.247541e-11
+      objectReference: {fileID: 0}
     - target: {fileID: 8188996577796577340, guid: 4a061f97841861b4493177010a11ded2,
         type: 3}
       propertyPath: m_BoundingSphereOverride.x
@@ -409,6 +450,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8660357481176242201}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2023717843683948278 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7222214241746333423, guid: de9113c0cb928ce499e1f8ba577193ae,
+    type: 3}
+  m_PrefabInstance: {fileID: 8660357481176242201}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4075bc2c3aac7c643856b0eb33d1eae1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8660357481829357785
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -669,6 +722,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8660357481563565743}
     m_Modifications:
+    - target: {fileID: 697658879, guid: d5ac2ccc878c83448af908c91835dbd6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3186670547669737135, guid: d5ac2ccc878c83448af908c91835dbd6,
         type: 3}
       propertyPath: m_Name
@@ -677,7 +734,7 @@ PrefabInstance:
     - target: {fileID: 3186670547669737139, guid: d5ac2ccc878c83448af908c91835dbd6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.12
+      value: 0.76
       objectReference: {fileID: 0}
     - target: {fileID: 3186670547669737139, guid: d5ac2ccc878c83448af908c91835dbd6,
         type: 3}
@@ -729,6 +786,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3186670548108968483, guid: d5ac2ccc878c83448af908c91835dbd6,
+        type: 3}
+      propertyPath: zombieSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186670548108968483, guid: d5ac2ccc878c83448af908c91835dbd6,
+        type: 3}
+      propertyPath: maxSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8143289150678962588, guid: d5ac2ccc878c83448af908c91835dbd6,
         type: 3}
       propertyPath: followDogCamera
@@ -742,3 +809,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8660357482532820227}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6059196118212794144 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3186670548108968483, guid: d5ac2ccc878c83448af908c91835dbd6,
+    type: 3}
+  m_PrefabInstance: {fileID: 8660357482532820227}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e5317149143544c991f7d2097e8e69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
