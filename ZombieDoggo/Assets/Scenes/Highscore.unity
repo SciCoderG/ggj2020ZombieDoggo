@@ -520,7 +520,7 @@ GameObject:
   - component: {fileID: 1058035550}
   - component: {fileID: 1058035549}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextHighscore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -542,8 +542,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000026703, y: 0.000015259}
-  m_SizeDelta: {x: 956, y: 504.8}
+  m_AnchoredPosition: {x: 94.8, y: 0.000015259}
+  m_SizeDelta: {x: 776.7, y: 504.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1058035549
 MonoBehaviour:
@@ -570,7 +570,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 80
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -912,8 +912,9 @@ GameObject:
   - component: {fileID: 1945925465}
   - component: {fileID: 1945925467}
   - component: {fileID: 1945925466}
+  - component: {fileID: 1945925468}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: ContentPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -977,3 +978,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1945925464}
   m_CullTransparentMesh: 0
+--- !u!114 &1945925468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945925464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a705a76587ecc54c96d241ba170e8d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highscore: {fileID: 1058035549}
+  maxHighscore: 5
