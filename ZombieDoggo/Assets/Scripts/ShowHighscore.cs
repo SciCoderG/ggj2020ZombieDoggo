@@ -20,7 +20,7 @@ public class ShowHighscore : MonoBehaviour
 
         for (int i = 0; i < maxHighscore; i++)
         {
-            highscore.text += i.ToString() + ". " + Highscore.GetHighScoreNames().GetValue(i) + "  " + Highscore.GetHighScores().GetValue(i).ToString() + "\n"; 
+            highscore.text += (i+1).ToString() + ". " + Highscore.GetHighScoreNames().GetValue(i) + "  " + Highscore.GetHighScores().GetValue(i).ToString() + "\n"; 
         }
     }
 
