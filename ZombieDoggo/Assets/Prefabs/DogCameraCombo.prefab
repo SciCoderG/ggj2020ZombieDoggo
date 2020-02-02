@@ -370,6 +370,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8660357481829357785}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8660357482032486401 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 337936600, guid: 9dd029504408c7f4892ff1967afb7520,
+    type: 3}
+  m_PrefabInstance: {fileID: 8660357481829357785}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16b5384cc797e9b42b55f06c62715b58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8660357482532820227
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -377,10 +389,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8660357481563565743}
     m_Modifications:
-    - target: {fileID: 697658879, guid: d5ac2ccc878c83448af908c91835dbd6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3186670547669737135, guid: d5ac2ccc878c83448af908c91835dbd6,
         type: 3}
       propertyPath: m_Name
@@ -389,7 +397,7 @@ PrefabInstance:
     - target: {fileID: 3186670547669737139, guid: d5ac2ccc878c83448af908c91835dbd6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.11
+      value: -3.25
       objectReference: {fileID: 0}
     - target: {fileID: 3186670547669737139, guid: d5ac2ccc878c83448af908c91835dbd6,
         type: 3}
@@ -399,7 +407,7 @@ PrefabInstance:
     - target: {fileID: 3186670547669737139, guid: d5ac2ccc878c83448af908c91835dbd6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20.27
+      value: -16.91
       objectReference: {fileID: 0}
     - target: {fileID: 3186670547669737139, guid: d5ac2ccc878c83448af908c91835dbd6,
         type: 3}
@@ -441,11 +449,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3186670548108968483, guid: d5ac2ccc878c83448af908c91835dbd6,
+    - target: {fileID: 8143289150678962588, guid: d5ac2ccc878c83448af908c91835dbd6,
         type: 3}
-      propertyPath: zombieSpeed
-      value: 10
-      objectReference: {fileID: 0}
+      propertyPath: followDogCamera
+      value: 
+      objectReference: {fileID: 8660357482032486401}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5ac2ccc878c83448af908c91835dbd6, type: 3}
 --- !u!4 &6059196118645738416 stripped
