@@ -22,8 +22,8 @@ public class OnCollisionGetDamage : MonoBehaviour
     private void Start()
     {
         PickupItem[] startItems = GetComponentsInChildren<PickupItem>();
-        foreach (PickupItem item in startItems)
-            dropItemArea.AttachItem(item);
+        //foreach (PickupItem item in startItems)
+        //    dropItemArea.AttachItem(item);
     }
 
     private void Update()

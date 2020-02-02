@@ -41,10 +41,10 @@ public class PickupItem : MonoBehaviour
 
     public void AttachToZombie(Transform bone)
     {
-        root.SetParent(bone);
+        root.parent = bone;
         IsCarried = false;
         root.forward = bone.forward;
-        root.localPosition = -PickupAttachPoint.localPosition;
+        root.localPosition = -PickupAttachPoint.localPosition * root.localScale.z;
         itemRB.isKinematic = true;
         pickupCollider.enabled = false;
     }
