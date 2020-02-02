@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent( typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody))]
 public class ZombieManagementScript : MonoBehaviour
 {
     [SerializeField]
     private float lifeSpan = 25.0f;
     [SerializeField]
     private float zombieSpeed = 1.0f;
+
+
     [SerializeField]
     private float increaseMultiplier = 0.01f;
     [SerializeField]
@@ -34,6 +36,8 @@ public class ZombieManagementScript : MonoBehaviour
     private Vector3 originalPosition = Vector3.zero;
     private float originalSpeed = 0.0f;
 
+    private float speedMultiplieder = 1.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +49,7 @@ public class ZombieManagementScript : MonoBehaviour
     public void StopZombie()
     {
         zombieRB.velocity = Vector3.zero;
-        zombieSpeed = 0.0f;
+        speedMultiplieder = 0.0f;
     }
 
     public void PlayDeathAnimation()
@@ -60,7 +64,7 @@ public class ZombieManagementScript : MonoBehaviour
 
         Vector3 newPlanarVelocity = movementDirection * zombieSpeed;
         float clampedVerticalSpeed = Mathf.Clamp(zombieRB.velocity.y, -5.0f, 5.0f);
-        zombieRB.velocity = new Vector3(newPlanarVelocity.x, clampedVerticalSpeed, newPlanarVelocity.z);
+        zombieRB.velocity = new Vector3(newPlanarVelocity.x, clampedVerticalSpeed, newPlanarVelocity.z) * speedMultiplieder;
         zombieAnimator.SetFloat("MovementStateMachine", zombieRB.velocity.magnitude);
         IncreaseSpeed();
     }
@@ -93,7 +97,7 @@ public class ZombieManagementScript : MonoBehaviour
 
     private IEnumerator ReturnToWalkingForward()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         movementDirection = Vector3.forward;
     }
 
@@ -120,6 +124,7 @@ public class ZombieManagementScript : MonoBehaviour
     public void StartDragging()
     {
         zombieAnimator.SetBool("isDragged", true);
+        StopZombie();
     }
 
     public void StopDragging()
@@ -127,6 +132,7 @@ public class ZombieManagementScript : MonoBehaviour
         zombieAnimator.SetBool("isDragged", false);
         this.transform.forward = Vector3.forward;
         this.transform.parent = null;
+        speedMultiplieder = 1.0f;
     }
 
 

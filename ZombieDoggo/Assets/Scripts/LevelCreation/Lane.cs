@@ -21,20 +21,28 @@ public class Lane : MonoBehaviour
 
     public void Spawn()
     {
-        StartCoroutine(AnimateSpawn());
+        StartCoroutine(AnimateSpawn(0, 1));
     }
 
-    private IEnumerator AnimateSpawn()
+    public void Despawn()
     {
-        float deltaTime = 0.0f;
-        while(deltaTime < 1.0f)
+        StartCoroutine(AnimateSpawn(1, 0));
+        Destroy(this.gameObject, 1.0f);
+    }
+
+    private IEnumerator AnimateSpawn(float from, float to)
+    {
+        float delta = to - from;
+
+        float interpolation = 0.0f;
+        while (Mathf.Abs(interpolation) < Mathf.Abs(delta))
         {
             transform.position = new Vector3(
             transform.position.x,
-            spawnCurve.Evaluate(deltaTime),
+            spawnCurve.Evaluate(from + interpolation),
             transform.position.z);
             yield return null;
-            deltaTime += Time.deltaTime;
+            interpolation += Mathf.Sign(delta) * Time.deltaTime;
         }
     }
 }

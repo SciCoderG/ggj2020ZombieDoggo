@@ -16,10 +16,10 @@ public class ControlPanel : MonoBehaviour
 
         StartCoroutine(startGame());
     }
-    
+
     IEnumerator startGame()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(4f / 0.75f);
 
         controlPanel.SetActive(false);
         //Time.timeScale = 1;

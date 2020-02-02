@@ -109,7 +109,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Eimer_01001
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -6860895033569716450, guid: 243dd7e6dab492248a2ca80eb5db29fd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 243dd7e6dab492248a2ca80eb5db29fd, type: 3}
 --- !u!1 &6109786290208338262 stripped
 GameObject:

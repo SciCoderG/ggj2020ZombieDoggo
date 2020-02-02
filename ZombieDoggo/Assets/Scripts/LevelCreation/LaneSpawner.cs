@@ -7,13 +7,15 @@ public class LaneSpawner : MonoBehaviour
 {
     [SerializeField]
     private Lane[] lanePrefabs = null;
+    [SerializeField]
+    private int maxAllowedLanes = 5;
 
     private List<Lane> spawnedLanes = new List<Lane>();
 
     private void Awake()
     {
         spawnedLanes.Add(FindObjectOfType<Lane>());
-        foreach(Lane lane in spawnedLanes)
+        foreach (Lane lane in spawnedLanes)
         {
             lane.OnSpawnNextLane += OnSpawnNewLane;
         }
@@ -23,9 +25,17 @@ public class LaneSpawner : MonoBehaviour
     {
         Lane prefabTypeToSpawn = Utilities.RandomFromArray(lanePrefabs);
 
-        Lane spawnedLane = Instantiate(prefabTypeToSpawn.gameObject).GetComponent<Lane>();  
-        spawnedLane.transform.position = origin.NextLaneSpawnPoint.position;
-        spawnedLane.OnSpawnNextLane += OnSpawnNewLane;
-        spawnedLane.Spawn();
+        Lane newLane = Instantiate(prefabTypeToSpawn.gameObject).GetComponent<Lane>();
+        newLane.transform.position = origin.NextLaneSpawnPoint.position;
+        newLane.OnSpawnNextLane += OnSpawnNewLane;
+        newLane.Spawn();
+        spawnedLanes.Add(newLane);
+
+        if (spawnedLanes.Count > maxAllowedLanes)
+        {
+            Lane firstLane = spawnedLanes[0];
+            firstLane.Despawn();
+            spawnedLanes.Remove(firstLane);
+        }
     }
 }
