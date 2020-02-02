@@ -1,30 +1,14 @@
 fileFormatVersion: 2
-guid: 7e9a98816aa00d64eb1b83c70e702529
+guid: 1686861bdd323bd4284f8c79abe1890f
 ModelImporter:
   serializedVersion: 19300
-  internalIDToNameTable:
+  internalIDToNameTable: []
+  externalObjects:
   - first:
-      74: -6532388819408017402
-    second: DoggoRig|AttachItem
-  - first:
-      74: 525447926839929552
-    second: DoggoRig|DefaultAction
-  - first:
-      74: -2500333041614067080
-    second: DoggoRig|DragForward
-  - first:
-      74: 1734028141924833069
-    second: DoggoRig|DragRight
-  - first:
-      74: 1619567396893334182
-    second: DoggoRig|DropItem
-  - first:
-      74: 8976090442424750771
-    second: DoggoRig|PickUpItem
-  - first:
-      74: -7130164415951478192
-    second: DoggoRig|RunCycle
-  externalObjects: {}
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: 28ae3275eeccb624aa02cb3486b81ce0, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
