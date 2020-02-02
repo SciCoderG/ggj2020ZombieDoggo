@@ -40,7 +40,7 @@ public class ZombieManagementScript : MonoBehaviour
 
     public void PlayDeathAnimation()
     {
-        // TODO
+        zombieAnimator.SetTrigger("IsDying");
     }
 
     // Update is called once per frame

@@ -10,6 +10,8 @@ public class ZombieDeathBehavior : MonoBehaviour
     [SerializeField]
     private ZombieManagementScript zombieManagementScript = null;
     [SerializeField]
+    private DropItemArea dropItemArea = null;
+    [SerializeField]
     private Transform OnDeathCameraPos = null;
     [SerializeField]
     private string HighScoreLevelName = "Highscore";
@@ -30,7 +32,7 @@ public class ZombieDeathBehavior : MonoBehaviour
         zombieManagementScript.PlayDeathAnimation();
         zombieManagementScript.enabled = false;
         zombieManagementScript.StopZombie();
-
+        dropItemArea.GetComponent<Collider>().enabled = false;
         StartCoroutine(SwitchToHighscoreScene());
     }
 

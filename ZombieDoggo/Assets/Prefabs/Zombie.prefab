@@ -427,6 +427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followDogCamera: {fileID: 0}
   zombieManagementScript: {fileID: 3186670548108968483}
+  dropItemArea: {fileID: 8648036031223706629}
   OnDeathCameraPos: {fileID: 7611325803933614488}
   HighScoreLevelName: Highscore
   timeToWaitBeforeSwitchToHighscore: 5
