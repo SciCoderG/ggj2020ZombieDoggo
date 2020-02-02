@@ -62,6 +62,10 @@ public class PickupGrabber : MonoBehaviour
 
             item.Pickup(grabbingPoint);
         }
+
+
+        //Sound pickUp
+        this.GetComponents<AudioSource>()[0].Play();
     }
 
     public void DropCurrentlyAttachedItem()
@@ -70,6 +74,9 @@ public class PickupGrabber : MonoBehaviour
         doggoAnimator.SetTrigger("DropTrigger");
 
         StartCoroutine(WaitBeforeStartDrop());
+
+        //Sound drop
+        this.GetComponents<AudioSource>()[1].Play();
     }
 
     private IEnumerator WaitBeforeStartDrop()

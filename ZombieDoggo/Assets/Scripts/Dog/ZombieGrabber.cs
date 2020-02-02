@@ -67,6 +67,9 @@ public class ZombieGrabber : MonoBehaviour
 
         dogAnimator.SetBool("isDragging", true);
 
+        //Sound grabZombie
+        this.GetComponents<AudioSource>()[0].Play();
+
         StartCoroutine(AnimationCoroutine());
     }
 
@@ -78,5 +81,7 @@ public class ZombieGrabber : MonoBehaviour
         zombieMovement.StopDragging();
         dogAnimator.SetBool("isDragging", false);
 
+        //Sound letZombieGo
+        this.GetComponents<AudioSource>()[1].Play();
     }
 }
