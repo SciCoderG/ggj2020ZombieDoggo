@@ -27,7 +27,7 @@ public class ItemAttachmentPoint : MonoBehaviour
 
     private void Start()
     {
-        if(null == attachedItem)
+        if (null == attachedItem)
             DisplayDestroyed();
         else
         {
@@ -44,14 +44,14 @@ public class ItemAttachmentPoint : MonoBehaviour
 
     public void Damage(float value)
     {
-        if(null != attachedItem)
+        if (null != attachedItem)
         {
             greenImage.fillAmount -= value / attachedItem.Life;
 
             if (greenImage.fillAmount <= 0)
             {
                 DisplayDestroyed();
-                zombieAudioSource.PlayOneShot(clip, 3.0f);
+                zombieAudioSource.PlayOneShot(clip, 4.0f);
                 attachedItem.DestroyItself();
                 attachedItem = null;
             }
@@ -60,18 +60,18 @@ public class ItemAttachmentPoint : MonoBehaviour
 
     private void DisplayDestroyed()
     {
-        if(null != greenImage && null != redImage)
+        if (null != greenImage && null != redImage)
         {
             greenImage.enabled = false;
             redImage.enabled = false;
             greenImage.fillAmount = 0.0f;
         }
-        
+
     }
 
     private void DisplayFullHealth()
     {
-        if(null != greenImage && null != redImage)
+        if (null != greenImage && null != redImage)
         {
             redImage.enabled = true;
             greenImage.enabled = true;

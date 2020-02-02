@@ -673,6 +673,7 @@ MonoBehaviour:
   deccelerationSpeed: 5
   slowDownMultiplierOnGrab: 0.5
   doggoAnimator: {fileID: 6831142562567696796}
+  zombieScript: {fileID: 0}
 --- !u!114 &881664022
 MonoBehaviour:
   m_ObjectHideFlags: 0

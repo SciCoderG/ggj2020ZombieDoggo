@@ -20,6 +20,9 @@ public class ZombieDeathBehavior : MonoBehaviour
 
     [SerializeField]
     private AudioSource audioSource = null;
+
+    private bool isAlreadyDead = false;
+
     private void Awake()
     {
         if (null == followDogCamera)
@@ -27,19 +30,24 @@ public class ZombieDeathBehavior : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>();
     }
-    
+
     public void OnDeath()
     {
-        followDogCamera.enabled = false;
-        CameraMovement cameraMovement = followDogCamera.GetComponent<CameraMovement>();
-        cameraMovement.Target = OnDeathCameraPos.position;
-        cameraMovement.LerpToRotation(OnDeathCameraPos.rotation);
-        zombieManagementScript.PlayDeathAnimation();
-        zombieManagementScript.enabled = false;
-        zombieManagementScript.StopZombie();
-        dropItemArea.GetComponent<Collider>().enabled = false;
-        audioSource.PlayOneShot(audioSource.clip, 2.0f);
-        StartCoroutine(SwitchToHighscoreScene());
+        if (!isAlreadyDead)
+        {
+            followDogCamera.enabled = false;
+            CameraMovement cameraMovement = followDogCamera.GetComponent<CameraMovement>();
+            cameraMovement.Target = OnDeathCameraPos.position;
+            cameraMovement.LerpToRotation(OnDeathCameraPos.rotation);
+            zombieManagementScript.PlayDeathAnimation();
+            zombieManagementScript.enabled = false;
+            zombieManagementScript.StopZombie();
+            dropItemArea.GetComponent<Collider>().enabled = false;
+            audioSource.PlayOneShot(audioSource.clip, 2.0f);
+            isAlreadyDead = true;
+            StartCoroutine(SwitchToHighscoreScene());
+        }
+
     }
 
     private IEnumerator SwitchToHighscoreScene()

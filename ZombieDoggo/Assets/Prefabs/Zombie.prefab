@@ -131,7 +131,7 @@ MonoBehaviour:
   lifeSpan: 25
   zombieSpeed: 2
   increaseMultiplier: 0.01
-  maxSpeed: 5
+  maxSpeed: 20
   dropArea: {fileID: 8648036031223706629}
   zombieAnimator: {fileID: 4130670248638679409}
 --- !u!136 &165536700

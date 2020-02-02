@@ -37,7 +37,7 @@ public class ZombieGrabber : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Grabbing")&& CanGrab)
+        if (Input.GetButtonDown("Grabbing") && CanGrab)
         {
             GrabZombie();
         }

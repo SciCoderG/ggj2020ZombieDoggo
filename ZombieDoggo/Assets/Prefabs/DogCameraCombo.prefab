@@ -442,6 +442,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dog
       objectReference: {fileID: 0}
+    - target: {fileID: 7222214241746333423, guid: de9113c0cb928ce499e1f8ba577193ae,
+        type: 3}
+      propertyPath: zombieScript
+      value: 
+      objectReference: {fileID: 6059196118212794144}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de9113c0cb928ce499e1f8ba577193ae, type: 3}
 --- !u!4 &2023717843683948280 stripped
@@ -722,10 +727,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8660357481563565743}
     m_Modifications:
-    - target: {fileID: 697658879, guid: d5ac2ccc878c83448af908c91835dbd6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3186670547669737135, guid: d5ac2ccc878c83448af908c91835dbd6,
         type: 3}
       propertyPath: m_Name
@@ -785,16 +786,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3186670548108968483, guid: d5ac2ccc878c83448af908c91835dbd6,
-        type: 3}
-      propertyPath: zombieSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3186670548108968483, guid: d5ac2ccc878c83448af908c91835dbd6,
-        type: 3}
-      propertyPath: maxSpeed
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8143289150678962588, guid: d5ac2ccc878c83448af908c91835dbd6,
         type: 3}

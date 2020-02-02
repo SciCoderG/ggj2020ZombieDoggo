@@ -17,7 +17,9 @@ public class DogMovement : MonoBehaviour
     [SerializeField]
     private float slowDownMultiplierOnGrab = 0.5f;
     public Vector2 MaxVelocity { get { return maxVelocity; } set { maxVelocity = value; } }
-   
+
+
+
     public bool SlowDownWhileDragging { get; set; }
 
     private Rigidbody dogRigidBody = null;
@@ -26,7 +28,8 @@ public class DogMovement : MonoBehaviour
     [SerializeField]
     private Animator doggoAnimator = null;
 
-  
+    [SerializeField]
+    private ZombieManagementScript zombieScript = null;
 
     void Awake()
     {
@@ -36,7 +39,7 @@ public class DogMovement : MonoBehaviour
 
     private void Update()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -50,6 +53,14 @@ public class DogMovement : MonoBehaviour
         DampVelocity(velocityChange);
         ClampVelocity();
         UpdateRotation();
+
+        if (null != zombieScript)
+        {
+            maxVelocity.x = Mathf.Max(maxVelocity.x, zombieScript.ZombieSpeed + 3.0f);
+            maxVelocity.y = Mathf.Max(maxVelocity.y, zombieScript.ZombieSpeed + 3.0f);
+        }
+
+
         doggoAnimator.SetFloat("velocityX", Mathf.Abs(dogRigidBody.velocity.x));
         doggoAnimator.SetFloat("velocityZ", Mathf.Abs(dogRigidBody.velocity.z));
     }
@@ -83,7 +94,7 @@ public class DogMovement : MonoBehaviour
     private void UpdateRotation()
     {
         Vector3 currentVel = dogRigidBody.velocity;
-        if(currentVel.sqrMagnitude > 0.1f)
+        if (currentVel.sqrMagnitude > 0.1f)
         {
             rotateTowardsScript.Target = dogRigidBody.transform.position + dogRigidBody.velocity.normalized;
         }
@@ -97,7 +108,7 @@ public class DogMovement : MonoBehaviour
     {
         Vector3 horInputVec = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
         Vector3 velocityChange = Vector3.zero;
-            velocityChange = horInputVec* acceleration.x;
+        velocityChange = horInputVec * acceleration.x;
         return velocityChange;
     }
 
@@ -105,7 +116,7 @@ public class DogMovement : MonoBehaviour
     {
         Vector3 vertInputVec = new Vector3(0f, 0f, Input.GetAxis("Vertical"));
         Vector3 velocityChange = Vector3.zero;
-            velocityChange = vertInputVec* acceleration.y;
+        velocityChange = vertInputVec * acceleration.y;
         return velocityChange;
     }
 
