@@ -195,7 +195,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 6.71e-43, y: 0, z: 0, w: NaN}
+  m_BoundingSphereOverride: {x: 6.08e-43, y: 4.9e-44, z: 0, w: -0.000000008518363}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -289,6 +289,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8149374913885864018, guid: 965091bfa4d123442a4ef3f1229c0d25,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.55869526
+      objectReference: {fileID: 0}
+    - target: {fileID: 8149374913885864018, guid: 965091bfa4d123442a4ef3f1229c0d25,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.8773585
+      objectReference: {fileID: 0}
+    - target: {fileID: 8149374913885864018, guid: 965091bfa4d123442a4ef3f1229c0d25,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.8773585
+      objectReference: {fileID: 0}
     - target: {fileID: 8660357481563565742, guid: 965091bfa4d123442a4ef3f1229c0d25,
         type: 3}
       propertyPath: m_Name
@@ -353,6 +368,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8660357482032486401, guid: 965091bfa4d123442a4ef3f1229c0d25,
+        type: 3}
+      propertyPath: leftRightMaxMovement
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 965091bfa4d123442a4ef3f1229c0d25, type: 3}
