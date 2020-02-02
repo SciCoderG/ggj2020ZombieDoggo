@@ -11,6 +11,8 @@ public class OnCollisionGetDamage : MonoBehaviour
     private float damageThreshold = 0.2f;
     [SerializeField]
     private float timeBetweenDamage = 1.0f;
+    [SerializeField]
+    private ZombieDeathBehavior deathBehavior = null;
 
     private ItemAttachmentPoint currentlyDamagedBone = null;
 
@@ -22,6 +24,14 @@ public class OnCollisionGetDamage : MonoBehaviour
         PickupItem[] startItems = GetComponentsInChildren<PickupItem>();
         foreach (PickupItem item in startItems)
             dropItemArea.AttachItem(item);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Damage();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -41,6 +51,12 @@ public class OnCollisionGetDamage : MonoBehaviour
         if(null != currentlyDamagedBone)
         {
             currentlyDamagedBone.Damage(1.0f);
+            if (!currentlyDamagedBone.HasAttachedItem )
+            {
+                dropItemArea.DettachHat();
+                if(null == dropItemArea.GetRandomUsedAttachmentPoint())
+                    OnZombieDied();
+            }
             StartCoroutine(WaitBeforeDamagePossibleAgain());
         }
         else
@@ -52,7 +68,7 @@ public class OnCollisionGetDamage : MonoBehaviour
 
     private void OnZombieDied()
     {
-        // TODO
+        deathBehavior.OnDeath();
     }
 
     private IEnumerator WaitBeforeDamagePossibleAgain()

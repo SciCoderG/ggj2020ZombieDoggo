@@ -94,5 +94,4 @@ public class Highscore : MonoBehaviour
         return newHighscore;
     }
 
-
 }
