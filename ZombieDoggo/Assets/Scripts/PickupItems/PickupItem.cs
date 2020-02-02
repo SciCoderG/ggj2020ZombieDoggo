@@ -34,6 +34,7 @@ public class PickupItem : MonoBehaviour
         root.localPosition = Vector3.zero;
         root.forward = grabbingPoint.forward;
         itemRB.isKinematic = true;
+        pickupCollider.isTrigger = true;
         pickupCollider.enabled = true;
 
     }
@@ -41,6 +42,7 @@ public class PickupItem : MonoBehaviour
     public void AttachToZombie(Transform bone)
     {
         root.SetParent(bone);
+        IsCarried = false;
         root.forward = bone.forward;
         root.localPosition = -PickupAttachPoint.localPosition;
         itemRB.isKinematic = true;
@@ -53,6 +55,7 @@ public class PickupItem : MonoBehaviour
         IsCarried = false;
         itemRB.isKinematic = false;
         pickupCollider.enabled = true;
+        pickupCollider.isTrigger = false;
         itemRB.AddForce(dropForce * Vector3.up, ForceMode.VelocityChange);
     }
 

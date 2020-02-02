@@ -6,6 +6,8 @@ public class FollowDogCameraMovement : MonoBehaviour
 {
     [SerializeField]
     public float zoomValue = 0f;
+    [SerializeField]
+    private float leftRightMaxMovement = 2.0f;
 
     private Vector3 initialOffset = Vector3.zero;
    
@@ -13,9 +15,9 @@ public class FollowDogCameraMovement : MonoBehaviour
     private float startFieldOfView;
     private float delta = 0f;
     
-    private DogMovement dogObject = null;   
+    private DogMovement dogObject = null;
 
-
+    private Vector3 initalPos = Vector3.zero;
 
     private void Awake()
     {
@@ -26,7 +28,8 @@ public class FollowDogCameraMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-     
+
+        initalPos = transform.position;
         startFieldOfView = this.GetComponent<Camera>().fieldOfView;
         delta = startFieldOfView;
         initialOffset = transform.position - dogObject.transform.position;   
@@ -51,7 +54,11 @@ public class FollowDogCameraMovement : MonoBehaviour
                 this.GetComponent<Camera>().fieldOfView = delta;
             }
         }
-        this.transform.position = new Vector3(transform.position.x, transform.position.y, dogObject.transform.position.z + initialOffset.z);
+
+        float distDogCamX = dogObject.transform.position.x - initalPos.x;
+
+        float camXPos = Mathf.Clamp(distDogCamX, -leftRightMaxMovement, leftRightMaxMovement);
+        this.transform.position = new Vector3(camXPos, transform.position.y, dogObject.transform.position.z + initialOffset.z);
 
     }
 }

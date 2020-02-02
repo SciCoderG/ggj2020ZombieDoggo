@@ -29,11 +29,11 @@ public class ZombieManagementScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        transform.forward = Vector3.forward;
 
         Vector3 newPlanarVelocity = movementDirection * zombieSpeed;
         float clampedVerticalSpeed = Mathf.Clamp(zombieRB.velocity.y, -5.0f, 5.0f);
         zombieRB.velocity = new Vector3(newPlanarVelocity.x, clampedVerticalSpeed, newPlanarVelocity.z);
-
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -21,6 +21,10 @@ public class PickupGrabber : MonoBehaviour
 
     private void Update()
     {
+        if(null != currentlyAttachedItem && !currentlyAttachedItem.IsCarried)
+        {
+            currentlyAttachedItem = null;
+        }
         if (Input.GetButtonDown("Grabbing") && null != currentlyAttachedItem)
         {
             DropCurrentlyAttachedItem();
