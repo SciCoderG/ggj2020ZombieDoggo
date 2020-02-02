@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -128,6 +128,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 697658879, guid: d5ac2ccc878c83448af908c91835dbd6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3186670547669737135, guid: d5ac2ccc878c83448af908c91835dbd6,
         type: 3}
       propertyPath: m_Name
@@ -435,6 +439,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d9a633090e19bd4bbe830eff9023f52, type: 3}
+--- !u!1 &1582613810 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8149374913885864028, guid: 965091bfa4d123442a4ef3f1229c0d25,
+    type: 3}
+  m_PrefabInstance: {fileID: 8660357482475922240}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1582613811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582613810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: bf465962181cd954ca7b967a1ad2bccb, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
 --- !u!1 &1628333322 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2023717843683948276, guid: 965091bfa4d123442a4ef3f1229c0d25,
@@ -746,6 +773,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6291278086429598577, guid: 965091bfa4d123442a4ef3f1229c0d25,
+        type: 3}
+      propertyPath: volumeLayer.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8149374913885864028, guid: 965091bfa4d123442a4ef3f1229c0d25,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8274590014730783726, guid: 965091bfa4d123442a4ef3f1229c0d25,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -819,6 +856,11 @@ PrefabInstance:
     - target: {fileID: 8660357481563565743, guid: 965091bfa4d123442a4ef3f1229c0d25,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8660357481888135420, guid: 965091bfa4d123442a4ef3f1229c0d25,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
