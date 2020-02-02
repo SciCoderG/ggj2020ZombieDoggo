@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent( typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody))]
 public class ZombieManagementScript : MonoBehaviour
 {
     [SerializeField]
@@ -93,7 +93,7 @@ public class ZombieManagementScript : MonoBehaviour
 
     private IEnumerator ReturnToWalkingForward()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         movementDirection = Vector3.forward;
     }
 

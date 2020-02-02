@@ -358,11 +358,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6059196118212794144, guid: 965091bfa4d123442a4ef3f1229c0d25,
-        type: 3}
-      propertyPath: zombieSpeed
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8660357481563565742, guid: 965091bfa4d123442a4ef3f1229c0d25,
         type: 3}
       propertyPath: m_Name

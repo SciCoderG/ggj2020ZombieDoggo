@@ -45,7 +45,9 @@ public class PickupItem : MonoBehaviour
         root.parent = bone;
         IsCarried = false;
         root.forward = bone.forward;
-        root.localPosition = -PickupAttachPoint.localPosition * root.localScale.z;
+        float localZPosition = -PickupAttachPoint.localPosition.z * root.localScale.z;
+        root.localPosition = new Vector3(0.0f, 0.0f, localZPosition);
+        //root.localPosition = -PickupAttachPoint.localPosition * root.localScale.z;
         itemRB.isKinematic = true;
         pickupCollider.enabled = false;
     }
