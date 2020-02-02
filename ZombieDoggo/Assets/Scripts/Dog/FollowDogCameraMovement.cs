@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CameraMovement))]
 public class FollowDogCameraMovement : MonoBehaviour
 {
     [SerializeField]
@@ -19,10 +20,15 @@ public class FollowDogCameraMovement : MonoBehaviour
 
     private Vector3 initalPos = Vector3.zero;
 
+
+    private CameraMovement cameraMovement = null;
+
     private void Awake()
     {
         if (null == dogObject)
             dogObject = FindObjectOfType<DogMovement>();
+
+        cameraMovement = GetComponent<CameraMovement>();
     }
 
     // Start is called before the first frame update
@@ -54,11 +60,13 @@ public class FollowDogCameraMovement : MonoBehaviour
                 this.GetComponent<Camera>().fieldOfView = delta;
             }
         }
+    }
 
+    private void FixedUpdate()
+    {
         float distDogCamX = dogObject.transform.position.x - initalPos.x;
 
         float camXPos = Mathf.Clamp(distDogCamX, -leftRightMaxMovement, leftRightMaxMovement);
-        this.transform.position = new Vector3(camXPos, transform.position.y, dogObject.transform.position.z + initialOffset.z);
-
+        cameraMovement.Target = new Vector3(camXPos, transform.position.y, dogObject.transform.position.z + initialOffset.z);
     }
 }

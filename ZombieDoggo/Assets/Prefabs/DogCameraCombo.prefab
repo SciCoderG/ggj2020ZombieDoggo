@@ -43,7 +43,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8660357481563565742}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c19b75a6f5f21854abff675cc0ba3fea, type: 3}
   m_Name: 
@@ -362,11 +362,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 664175874432587915, guid: 9dd029504408c7f4892ff1967afb7520,
-        type: 3}
-      propertyPath: field of view
-      value: 50
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dd029504408c7f4892ff1967afb7520, type: 3}
 --- !u!4 &8149374913885864017 stripped
@@ -445,6 +440,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186670548108968483, guid: d5ac2ccc878c83448af908c91835dbd6,
+        type: 3}
+      propertyPath: zombieSpeed
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5ac2ccc878c83448af908c91835dbd6, type: 3}
