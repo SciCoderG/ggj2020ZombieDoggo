@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 56b9ace3791b9e14e94ba9c3fd352564
+guid: 08e5a4772c5af3445a4944085cf42b18
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Colorswatch
-    second: {fileID: 2100000, guid: 172e5873d1bdb3f498bac4e133734607, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 1
     materialName: 0
