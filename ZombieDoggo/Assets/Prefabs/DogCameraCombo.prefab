@@ -43,13 +43,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8660357481563565742}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c19b75a6f5f21854abff675cc0ba3fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   controlPanel: {fileID: 0}
-  hudPanel: {fileID: 8660357481188721917}
 --- !u!1001 &1054210859695005882
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -362,11 +361,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 664175874432587915, guid: 9dd029504408c7f4892ff1967afb7520,
-        type: 3}
-      propertyPath: field of view
-      value: 50
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dd029504408c7f4892ff1967afb7520, type: 3}
 --- !u!4 &8149374913885864017 stripped
@@ -446,17 +440,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3186670548108968483, guid: d5ac2ccc878c83448af908c91835dbd6,
+        type: 3}
+      propertyPath: zombieSpeed
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5ac2ccc878c83448af908c91835dbd6, type: 3}
 --- !u!4 &6059196118645738416 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3186670547669737139, guid: d5ac2ccc878c83448af908c91835dbd6,
-    type: 3}
-  m_PrefabInstance: {fileID: 8660357482532820227}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8660357481188721917 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1885688318, guid: d5ac2ccc878c83448af908c91835dbd6,
     type: 3}
   m_PrefabInstance: {fileID: 8660357482532820227}
   m_PrefabAsset: {fileID: 0}
