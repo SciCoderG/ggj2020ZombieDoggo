@@ -46,15 +46,22 @@ public class ItemAttachmentPoint : MonoBehaviour
 
     private void DisplayDestroyed()
     {
-        greenImage.enabled = false;
-        redImage.enabled = false;
-        greenImage.fillAmount = 0.0f;
+        if(null != greenImage && null != redImage)
+        {
+            greenImage.enabled = false;
+            redImage.enabled = false;
+            greenImage.fillAmount = 0.0f;
+        }
+        
     }
 
     private void DisplayFullHealth()
     {
-        redImage.enabled = true;
-        greenImage.enabled = true;
-        greenImage.fillAmount = 1.0f;
+        if(null != greenImage && null != redImage)
+        {
+            redImage.enabled = true;
+            greenImage.enabled = true;
+            greenImage.fillAmount = 1.0f;
+        }
     }
 }

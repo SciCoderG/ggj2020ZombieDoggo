@@ -8,8 +8,12 @@ public class DropItemArea : MonoBehaviour
 {
     [SerializeField]
     private Transform ZombieRootNode = null;
+    [SerializeField]
+    private Transform HatPosition = null;
 
     private ItemAttachmentPoint[] attachmentPoints;
+
+    private PickupItem attachedHat = null;
 
     private void Awake()
     {
@@ -22,7 +26,30 @@ public class DropItemArea : MonoBehaviour
         PickupItem item = other.GetComponent<PickupItem>();
         if(null != item && item.IsCarried)
         {
-            AttachItem(item);
+            Hat hat = other.GetComponent<Hat>();
+            if (null != hat)
+                AttachHat(item);
+            else
+                AttachItem(item);
+        }
+    }
+
+    private void AttachHat(PickupItem hat)
+    {
+        if(null == attachedHat)
+        {
+            attachedHat = hat;
+            hat.AttachToZombie(HatPosition);
+        }
+        
+    }
+
+    public void DettachHat()
+    {
+        if(null != attachedHat)
+        {
+            attachedHat.DestroyItself();
+            attachedHat = null;
         }
     }
 
