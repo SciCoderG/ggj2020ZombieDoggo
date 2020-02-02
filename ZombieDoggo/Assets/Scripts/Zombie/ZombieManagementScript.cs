@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Animator), typeof(Rigidbody))]
+[RequireComponent( typeof(Rigidbody))]
 public class ZombieManagementScript : MonoBehaviour
 {
     [SerializeField]
@@ -20,6 +20,7 @@ public class ZombieManagementScript : MonoBehaviour
     [SerializeField]
     private DropItemArea dropArea = null;
 
+    [SerializeField]
     private Animator zombieAnimator = null;
     public Animator ZombieAnimator { get { return zombieAnimator; } }
 
@@ -38,7 +39,6 @@ public class ZombieManagementScript : MonoBehaviour
     {
         originalSpeed = zombieSpeed;
         originalPosition = transform.position;
-        zombieAnimator = GetComponent<Animator>();
         zombieRB = GetComponent<Rigidbody>();
     }
 
@@ -61,6 +61,7 @@ public class ZombieManagementScript : MonoBehaviour
         Vector3 newPlanarVelocity = movementDirection * zombieSpeed;
         float clampedVerticalSpeed = Mathf.Clamp(zombieRB.velocity.y, -5.0f, 5.0f);
         zombieRB.velocity = new Vector3(newPlanarVelocity.x, clampedVerticalSpeed, newPlanarVelocity.z);
+        zombieAnimator.SetFloat("MovementStateMachine", zombieRB.velocity.magnitude);
         IncreaseSpeed();
     }
 

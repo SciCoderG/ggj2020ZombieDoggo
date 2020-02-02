@@ -56,7 +56,12 @@ public class PickupItem : MonoBehaviour
         itemRB.isKinematic = false;
         pickupCollider.enabled = true;
         pickupCollider.isTrigger = false;
-        itemRB.AddForce(dropForce * Vector3.up, ForceMode.VelocityChange);
+
+        Vector3 randomDirection = Random.onUnitSphere;
+        randomDirection.y = Mathf.Abs(randomDirection.y);
+        randomDirection += Vector3.up;
+
+        itemRB.AddForce(dropForce * randomDirection.normalized, ForceMode.VelocityChange);
     }
 
     public void DestroyItself()
