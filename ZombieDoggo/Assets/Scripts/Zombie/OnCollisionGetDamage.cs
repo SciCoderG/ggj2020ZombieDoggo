@@ -56,6 +56,7 @@ public class OnCollisionGetDamage : MonoBehaviour
                 dropItemArea.DettachHat();
                 if(null == dropItemArea.GetRandomUsedAttachmentPoint())
                     OnZombieDied();
+                currentlyDamagedBone = null;
             }
             StartCoroutine(WaitBeforeDamagePossibleAgain());
         }
