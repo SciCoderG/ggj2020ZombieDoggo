@@ -37,12 +37,14 @@ public class Lane : MonoBehaviour
         float interpolation = 0.0f;
         while (Mathf.Abs(interpolation) < Mathf.Abs(delta))
         {
+            interpolation += Mathf.Sign(delta) * Time.deltaTime;
+
+            float newYPosition = spawnCurve.Evaluate(from + interpolation);
             transform.position = new Vector3(
             transform.position.x,
-            spawnCurve.Evaluate(from + interpolation),
+            newYPosition,
             transform.position.z);
             yield return null;
-            interpolation += Mathf.Sign(delta) * Time.deltaTime;
         }
     }
 }
