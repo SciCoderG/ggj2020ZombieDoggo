@@ -8,10 +8,14 @@ public class Lane : MonoBehaviour
     public Action<Lane> OnSpawnNextLane;
 
     [SerializeField]
-    private Transform spawnPoint = null;
+    private Transform startPoint = null;
+    [SerializeField]
+    private Transform endPoint = null;
     [SerializeField]
     private AnimationCurve spawnCurve = null;
-    public Transform NextLaneSpawnPoint { get { return spawnPoint; } }
+
+    public Transform StartPoint { get { return startPoint; } }
+    public Transform EndPoint { get { return endPoint; } }
 
     public void SpawnNextLane()
     {
@@ -37,12 +41,14 @@ public class Lane : MonoBehaviour
         float interpolation = 0.0f;
         while (Mathf.Abs(interpolation) < Mathf.Abs(delta))
         {
+            interpolation += Mathf.Sign(delta) * Time.deltaTime;
+
+            float newYPosition = spawnCurve.Evaluate(from + interpolation);
             transform.position = new Vector3(
             transform.position.x,
-            spawnCurve.Evaluate(from + interpolation),
+            newYPosition,
             transform.position.z);
             yield return null;
-            interpolation += Mathf.Sign(delta) * Time.deltaTime;
         }
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6635632648744171655}
   - component: {fileID: 7891367132251001446}
   m_Layer: 0
-  m_Name: LegRight
+  m_Name: SM_LegRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -26716385520787251, guid: 282bb787d4c9a814993c5fbcec556f5d, type: 3}
+  - {fileID: 2100000, guid: 172e5873d1bdb3f498bac4e133734607, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
