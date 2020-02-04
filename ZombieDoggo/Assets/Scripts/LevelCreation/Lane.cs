@@ -8,10 +8,14 @@ public class Lane : MonoBehaviour
     public Action<Lane> OnSpawnNextLane;
 
     [SerializeField]
-    private Transform spawnPoint = null;
+    private Transform startPoint = null;
+    [SerializeField]
+    private Transform endPoint = null;
     [SerializeField]
     private AnimationCurve spawnCurve = null;
-    public Transform NextLaneSpawnPoint { get { return spawnPoint; } }
+
+    public Transform StartPoint { get { return startPoint; } }
+    public Transform EndPoint { get { return endPoint; } }
 
     public void SpawnNextLane()
     {

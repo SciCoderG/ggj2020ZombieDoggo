@@ -21,12 +21,21 @@ public class LaneSpawner : MonoBehaviour
         }
     }
 
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            OnSpawnNewLane(spawnedLanes[spawnedLanes.Count - 1]);
+        }
+    }
     public void OnSpawnNewLane(Lane origin)
     {
         Lane prefabTypeToSpawn = Utilities.RandomFromArray(lanePrefabs);
 
         Lane newLane = Instantiate(prefabTypeToSpawn.gameObject).GetComponent<Lane>();
-        newLane.transform.position = origin.NextLaneSpawnPoint.position;
+        newLane.transform.position = origin.EndPoint.position - newLane.StartPoint.localPosition;
+
         newLane.OnSpawnNextLane += OnSpawnNewLane;
         newLane.Spawn();
         spawnedLanes.Add(newLane);
@@ -34,6 +43,7 @@ public class LaneSpawner : MonoBehaviour
         if (spawnedLanes.Count > maxAllowedLanes)
         {
             Lane firstLane = spawnedLanes[0];
+            firstLane.OnSpawnNextLane -= OnSpawnNewLane;
             firstLane.Despawn();
             spawnedLanes.Remove(firstLane);
         }
